@@ -79,7 +79,7 @@ typedef struct State {
 		
 	};
 	inline void set_resolution(double _value) {
-		m_resolution_1 = _value;
+		m_resolution_1 = (_value < 1 ? 1 : (_value > 16 ? 16 : _value));
 	};
 	
 } State;
@@ -164,7 +164,7 @@ void * create(double sr, long vs) {
 	pi->inputmax = 1;
 	pi->hasminmax = true;
 	pi->outputmin = 1;
-	pi->outputmax = 32;
+	pi->outputmax = 16;
 	pi->exp = 0;
 	pi->units = "bits";		// no units defined
 	
