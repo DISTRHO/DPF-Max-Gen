@@ -441,7 +441,7 @@ typedef struct State {
 		m_shift_25 = (_value < 0 ? 0 : (_value > 1 ? 1 : _value));
 	};
 	inline void set_ratio(double _value) {
-		m_ratio_26 = (_value < 0.5 ? 0.5 : (_value > 1 ? 1 : _value));
+		m_ratio_26 = (_value < 0.5 ? 0.5 : (_value > 2 ? 2 : _value));
 	};
 	inline void set_damping(double _value) {
 		m_damping_27 = (_value < 0 ? 0 : (_value > 1 ? 1 : _value));
@@ -597,7 +597,7 @@ void * create(double sr, long vs) {
 	pi->inputmax = 1;
 	pi->hasminmax = true;
 	pi->outputmin = 0.5;
-	pi->outputmax = 1;
+	pi->outputmax = 2;
 	pi->exp = 0;
 	pi->units = "";		// no units defined
 	// initialize parameter 2 ("m_damping_27")
