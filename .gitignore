@@ -14,3 +14,4 @@
 bin/*-dssi/
 bin/*.lv2/
 bin/Ma*
+gen_dsp/

@@ -7230,6 +7230,10 @@
 					}
 ,
 					"patching_rect" : [ 15.0, 494.0, 150.0, 20.0 ],
+					"saved_object_attributes" : 					{
+						"exportfolder" : "Macintosh HD:/Users/Nino/Documents/Git/DPF-Max-Gen/plugins/shiroverb/"
+					}
+,
 					"text" : "gen~"
 				}
 

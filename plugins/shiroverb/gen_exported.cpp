@@ -230,20 +230,20 @@ typedef struct State {
 			double mul_1770 = (mul_1774 * m_y_2);
 			double tap_1822 = m_delay_24.read_linear(mul_1922);
 			double mul_1818 = (tap_1822 * expr_2519);
-			double mix_2553 = (mul_1818 + (m_damping_27 * (m_history_10 - mul_1818)));
-			double mix_1820 = mix_2553;
+			double mix_2571 = (mul_1818 + (m_damping_27 * (m_history_10 - mul_1818)));
+			double mix_1820 = mix_2571;
 			double tap_1828 = m_delay_23.read_linear(mul_1923);
 			double mul_1824 = (tap_1828 * expr_2520);
-			double mix_2554 = (mul_1824 + (m_damping_27 * (m_history_9 - mul_1824)));
-			double mix_1826 = mix_2554;
+			double mix_2572 = (mul_1824 + (m_damping_27 * (m_history_9 - mul_1824)));
+			double mix_1826 = mix_2572;
 			double tap_1930 = m_delay_22.read_linear(mul_1925);
 			double mul_1921 = (tap_1930 * expr_2526);
-			double mix_2555 = (mul_1921 + (m_damping_27 * (m_history_8 - mul_1921)));
-			double mix_1928 = mix_2555;
+			double mix_2573 = (mul_1921 + (m_damping_27 * (m_history_8 - mul_1921)));
+			double mix_1928 = mix_2573;
 			double tap_1834 = m_delay_21.read_linear(mul_1924);
 			double mul_1830 = (tap_1834 * expr_2521);
-			double mix_2556 = (mul_1830 + (m_damping_27 * (m_history_7 - mul_1830)));
-			double mix_1832 = mix_2556;
+			double mix_2574 = (mul_1830 + (m_damping_27 * (m_history_7 - mul_1830)));
+			double mix_1832 = mix_2574;
 			double tap_1867 = m_delay_20.read_linear(mul_1868);
 			double mul_1865 = (tap_1867 * 0.625);
 			double add_1812 = (mix_1928 + mix_1832);
@@ -324,11 +324,11 @@ typedef struct State {
 			double mul_1733 = (tap_1754 * mul_1729);
 			double mul_1771 = ((((mul_1749 + mul_1748) + mul_1739) + mul_1733) * add_1772);
 			double sub_1768 = (mul_1771 - (m_y_11 + mul_1770));
-			double mix_2557 = (in1 + (m_shift_25 * (sub_1768 - in1)));
-			double mix_1709 = mix_2557;
+			double mix_2575 = (in1 + (m_shift_25 * (sub_1768 - in1)));
+			double mix_1709 = mix_2575;
 			double mul_1782 = (mix_1709 * 0.707);
-			double mix_2558 = (mul_1782 + (rsub_1933 * (m_history_1 - mul_1782)));
-			double mix_1932 = mix_2558;
+			double mix_2576 = (mul_1782 + (rsub_1933 * (m_history_1 - mul_1782)));
+			double mix_1932 = mix_2576;
 			double tap_1916 = m_delay_16.read_linear(mul_1917);
 			double tap_1874 = m_delay_15.read_linear(mul_1875);
 			double mul_1872 = (tap_1874 * 0.625);
@@ -441,7 +441,7 @@ typedef struct State {
 		m_shift_25 = (_value < 0 ? 0 : (_value > 1 ? 1 : _value));
 	};
 	inline void set_ratio(double _value) {
-		m_ratio_26 = (_value < 0.5 ? 0.5 : (_value > 2 ? 2 : _value));
+		m_ratio_26 = (_value < 0.5 ? 0.5 : (_value > 1 ? 1 : _value));
 	};
 	inline void set_damping(double _value) {
 		m_damping_27 = (_value < 0 ? 0 : (_value > 1 ? 1 : _value));
@@ -597,7 +597,7 @@ void * create(double sr, long vs) {
 	pi->inputmax = 1;
 	pi->hasminmax = true;
 	pi->outputmin = 0.5;
-	pi->outputmax = 2;
+	pi->outputmax = 1;
 	pi->exp = 0;
 	pi->units = "";		// no units defined
 	// initialize parameter 2 ("m_damping_27")
