@@ -7,7 +7,7 @@
 # --------------------------------------------------------------
 # Project name, used for binaries
 
-NAME = MaBitcrush
+NAME = Shiroverb
 
 # --------------------------------------------------------------
 # Files to build

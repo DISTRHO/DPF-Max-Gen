@@ -17,8 +17,8 @@
 #ifndef DISTRHO_PLUGIN_INFO_H_INCLUDED
 #define DISTRHO_PLUGIN_INFO_H_INCLUDED
 
-#define DISTRHO_PLUGIN_NAME "MaBitcrush"
-#define DISTRHO_PLUGIN_URI  "http://distrho.sf.net/plugins/MaBitcrush"
+#define DISTRHO_PLUGIN_NAME "MaPitchshift"
+#define DISTRHO_PLUGIN_URI  "http://distrho.sf.net/plugins/MaPitchshift"
 
 #define DISTRHO_PLUGIN_HAS_UI        0
 #define DISTRHO_PLUGIN_IS_RT_SAFE    0

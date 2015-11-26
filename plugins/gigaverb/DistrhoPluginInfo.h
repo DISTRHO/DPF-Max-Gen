@@ -17,14 +17,14 @@
 #ifndef DISTRHO_PLUGIN_INFO_H_INCLUDED
 #define DISTRHO_PLUGIN_INFO_H_INCLUDED
 
-#define DISTRHO_PLUGIN_NAME "MaBitcrush"
-#define DISTRHO_PLUGIN_URI  "http://distrho.sf.net/plugins/MaBitcrush"
+#define DISTRHO_PLUGIN_NAME "MaGigaverb"
+#define DISTRHO_PLUGIN_URI  "http://distrho.sf.net/plugins/MaGigaverb"
 
 #define DISTRHO_PLUGIN_HAS_UI        0
 #define DISTRHO_PLUGIN_IS_RT_SAFE    0
-#define DISTRHO_PLUGIN_NUM_INPUTS    1
+#define DISTRHO_PLUGIN_NUM_INPUTS    2
 #define DISTRHO_PLUGIN_NUM_OUTPUTS   2
 
-//#define DISTRHO_PLUGIN_LV2_CATEGORY "lv2:EQPlugin"
+//#define DISTRHO_PLUGIN_LV2_CATEGORY "lv2:ReverbPlugin"
 
 #endif // DISTRHO_PLUGIN_INFO_H_INCLUDED

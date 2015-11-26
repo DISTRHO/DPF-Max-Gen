@@ -7,7 +7,7 @@
 # --------------------------------------------------------------
 # Project name, used for binaries
 
-NAME = MaBitcrush
+NAME = MaGigaverb
 
 # --------------------------------------------------------------
 # Files to build
