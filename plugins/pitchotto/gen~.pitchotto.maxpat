@@ -2619,7 +2619,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 5.0, 45.0, 879.0, 830.0 ],
+						"rect" : [ 5.0, 45.0, 955.0, 830.0 ],
 						"bgcolor" : [ 0.9, 0.9, 0.9, 1.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
@@ -3600,8 +3600,8 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 564.5, 531.0, 180.0, 20.0 ],
-									"text" : "param mix 1. @min 0. @max 1."
+									"patching_rect" : [ 564.5, 531.0, 186.0, 20.0 ],
+									"text" : "param mix 0.5 @min 0. @max 1."
 								}
 
 							}
@@ -3839,7 +3839,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 754.5, 506.0, 230.0, 20.0 ],
-									"text" : "param cutoff 3000. @min 0. @max 3000."
+									"text" : "param cutoff 2250. @min 0. @max 3000."
 								}
 
 							}
@@ -4188,7 +4188,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 1231.333252, 11.0, 221.0, 20.0 ],
-									"text" : "param blur 0.01 @min 0.01 @max 0.25"
+									"text" : "param blur 0.25 @min 0.01 @max 0.25"
 								}
 
 							}

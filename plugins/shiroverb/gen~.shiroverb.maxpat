@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 27.0, 92.0, 914.0, 640.0 ],
+		"rect" : [ 27.0, 118.0, 914.0, 614.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -246,7 +246,7 @@
 					"outlettype" : [ "signal", "signal", "", "float", "list" ],
 					"parameter_enable" : 1,
 					"patching_rect" : [ 15.0, 528.0, 136.0, 42.0 ],
-					"presentation_rect" : [ 60.0, 60.0, 50.0, 28.0 ],
+					"presentation_rect" : [ 60.0, 60.0, 50.0, 42.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "live.gain~",
@@ -2635,20 +2635,6 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
-									"frgb" : 0.0,
-									"id" : "obj-212",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 871.0, 1003.0, 75.0, 20.0 ],
-									"text" : "prediffuse"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
 									"id" : "obj-211",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
@@ -3881,20 +3867,6 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
-									"frgb" : 0.0,
-									"id" : "obj-16",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 931.0, 868.0, 90.0, 20.0 ],
-									"text" : "input damper"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
 									"id" : "obj-14",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
@@ -3971,8 +3943,8 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 511.0, 1258.0, 214.0, 20.0 ],
-									"text" : "param damping 0.5 @min 0. @max 1."
+									"patching_rect" : [ 511.0, 1258.0, 220.0, 20.0 ],
+									"text" : "param damping 0.75 @min 0. @max 1."
 								}
 
 							}
@@ -7745,10 +7717,10 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-6" : [ "live.gain~", "live.gain~", 0 ],
-			"obj-7::obj-32" : [ "[8]", "[2]", 0 ],
 			"obj-7::obj-21::obj-6" : [ "live.tab[3]", "live.tab[1]", 0 ],
-			"obj-7::obj-35" : [ "[5]", "Level", 0 ]
+			"obj-6" : [ "live.gain~", "live.gain~", 0 ],
+			"obj-7::obj-35" : [ "[5]", "Level", 0 ],
+			"obj-7::obj-32" : [ "[8]", "[2]", 0 ]
 		}
 ,
 		"dependency_cache" : [ 			{

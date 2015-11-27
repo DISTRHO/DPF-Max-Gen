@@ -2091,20 +2091,6 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"frgb" : 0.0,
-					"id" : "obj-212",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 871.0, 1003.0, 75.0, 20.0 ],
-					"text" : "prediffuse"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
 					"id" : "obj-211",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -3337,20 +3323,6 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"frgb" : 0.0,
-					"id" : "obj-16",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 931.0, 868.0, 90.0, 20.0 ],
-					"text" : "input damper"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
 					"id" : "obj-14",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -3427,8 +3399,8 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 511.0, 1258.0, 214.0, 20.0 ],
-					"text" : "param damping 0.5 @min 0. @max 1."
+					"patching_rect" : [ 511.0, 1258.0, 220.0, 20.0 ],
+					"text" : "param damping 0.75 @min 0. @max 1."
 				}
 
 			}
