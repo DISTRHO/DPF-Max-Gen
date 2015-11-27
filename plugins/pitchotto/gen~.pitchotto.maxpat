@@ -96,7 +96,7 @@
 					"outlettype" : [ "signal", "signal", "", "float", "list" ],
 					"parameter_enable" : 1,
 					"patching_rect" : [ 285.0, 339.0, 136.0, 42.0 ],
-					"presentation_rect" : [ 287.0, 445.0, 50.0, 28.0 ],
+					"presentation_rect" : [ 287.0, 445.0, 50.0, 42.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "live.gain~[1]",
@@ -2553,7 +2553,7 @@
 					"outlettype" : [ "signal", "signal", "", "float", "list" ],
 					"parameter_enable" : 1,
 					"patching_rect" : [ 15.0, 339.0, 136.0, 42.0 ],
-					"presentation_rect" : [ 60.0, 60.0, 50.0, 28.0 ],
+					"presentation_rect" : [ 60.0, 60.0, 50.0, 42.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "live.gain~",
@@ -4187,7 +4187,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 1231.333252, 11.0, 221.0, 20.0 ],
+									"patching_rect" : [ 508.833313, 11.0, 221.0, 20.0 ],
 									"text" : "param blur 0.25 @min 0.01 @max 0.25"
 								}
 
@@ -6513,7 +6513,7 @@
 									"destination" : [ "obj-25", 1 ],
 									"disabled" : 0,
 									"hidden" : 0,
-									"midpoints" : [ 1240.833252, 63.0, 260.333313, 63.0 ],
+									"midpoints" : [ 518.333313, 63.0, 260.333313, 63.0 ],
 									"source" : [ "obj-55", 0 ]
 								}
 
@@ -6524,7 +6524,7 @@
 									"destination" : [ "obj-26", 1 ],
 									"disabled" : 0,
 									"hidden" : 0,
-									"midpoints" : [ 1240.833252, 63.0, 411.166656, 63.0 ],
+									"midpoints" : [ 518.333313, 63.0, 411.166656, 63.0 ],
 									"source" : [ "obj-55", 0 ]
 								}
 
@@ -6535,7 +6535,7 @@
 									"destination" : [ "obj-391", 1 ],
 									"disabled" : 0,
 									"hidden" : 0,
-									"midpoints" : [ 1240.833252, 63.0, 1451.833252, 63.0 ],
+									"midpoints" : [ 518.333313, 63.0, 1451.833252, 63.0 ],
 									"source" : [ "obj-55", 0 ]
 								}
 
@@ -6546,7 +6546,7 @@
 									"destination" : [ "obj-394", 1 ],
 									"disabled" : 0,
 									"hidden" : 0,
-									"midpoints" : [ 1240.833252, 63.0, 1301.0, 63.0 ],
+									"midpoints" : [ 518.333313, 63.0, 1301.0, 63.0 ],
 									"source" : [ "obj-55", 0 ]
 								}
 
@@ -6557,7 +6557,7 @@
 									"destination" : [ "obj-397", 1 ],
 									"disabled" : 0,
 									"hidden" : 0,
-									"midpoints" : [ 1240.833252, 63.0, 1150.166626, 63.0 ],
+									"midpoints" : [ 518.333313, 63.0, 1150.166626, 63.0 ],
 									"source" : [ "obj-55", 0 ]
 								}
 
@@ -6568,7 +6568,7 @@
 									"destination" : [ "obj-400", 1 ],
 									"disabled" : 0,
 									"hidden" : 0,
-									"midpoints" : [ 1240.833252, 63.0, 999.333313, 63.0 ],
+									"midpoints" : [ 518.333313, 63.0, 999.333313, 63.0 ],
 									"source" : [ "obj-55", 0 ]
 								}
 
@@ -6579,7 +6579,7 @@
 									"destination" : [ "obj-47", 1 ],
 									"disabled" : 0,
 									"hidden" : 0,
-									"midpoints" : [ 1240.833252, 63.0, 712.833313, 63.0 ],
+									"midpoints" : [ 518.333313, 63.0, 712.833313, 63.0 ],
 									"source" : [ "obj-55", 0 ]
 								}
 
@@ -6590,7 +6590,7 @@
 									"destination" : [ "obj-51", 1 ],
 									"disabled" : 0,
 									"hidden" : 0,
-									"midpoints" : [ 1240.833252, 63.0, 562.0, 63.0 ],
+									"midpoints" : [ 518.333313, 63.0, 562.0, 63.0 ],
 									"source" : [ "obj-55", 0 ]
 								}
 
@@ -7240,11 +7240,11 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-6" : [ "live.gain~", "live.gain~", 0 ],
-			"obj-7::obj-32" : [ "[8]", "[2]", 0 ],
-			"obj-25" : [ "live.gain~[1]", "live.gain~", 0 ],
 			"obj-7::obj-21::obj-6" : [ "live.tab[3]", "live.tab[1]", 0 ],
-			"obj-7::obj-35" : [ "[5]", "Level", 0 ]
+			"obj-25" : [ "live.gain~[1]", "live.gain~", 0 ],
+			"obj-6" : [ "live.gain~", "live.gain~", 0 ],
+			"obj-7::obj-35" : [ "[5]", "Level", 0 ],
+			"obj-7::obj-32" : [ "[8]", "[2]", 0 ]
 		}
 ,
 		"dependency_cache" : [ 			{
