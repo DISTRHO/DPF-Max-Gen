@@ -11,11 +11,12 @@ all: plugins gen
 # --------------------------------------------------------------
 
 plugins:
-	$(MAKE) all -C plugins/bitcrush
-	$(MAKE) all -C plugins/freeverb
-	$(MAKE) all -C plugins/gigaverb
-	$(MAKE) all -C plugins/pitchshift
+	#$(MAKE) all -C plugins/bitcrush
+	#$(MAKE) all -C plugins/freeverb
+	#$(MAKE) all -C plugins/gigaverb
+	#$(MAKE) all -C plugins/pitchshift
 	$(MAKE) all -C plugins/shiroverb
+	$(MAKE) all -C plugins/pitchotto
 
 gen: plugins dpf/utils/lv2_ttl_generator
 	@$(CURDIR)/dpf/utils/generate-ttl.sh
@@ -30,11 +31,12 @@ dpf/utils/lv2_ttl_generator:
 
 clean:
 	$(MAKE) clean -C dpf/utils/lv2-ttl-generator
-	$(MAKE) clean -C plugins/bitcrush
-	$(MAKE) clean -C plugins/freeverb
-	$(MAKE) clean -C plugins/gigaverb
-	$(MAKE) clean -C plugins/pitchshift
+	#$(MAKE) clean -C plugins/bitcrush
+	#$(MAKE) clean -C plugins/freeverb
+	#$(MAKE) clean -C plugins/gigaverb
+	#$(MAKE) clean -C plugins/pitchshift
 	$(MAKE) clean -C plugins/shiroverb
+	$(MAKE) clean -C plugins/pitchotto
 
 # --------------------------------------------------------------
 
