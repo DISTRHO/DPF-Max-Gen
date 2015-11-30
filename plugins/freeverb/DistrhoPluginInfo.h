@@ -17,14 +17,18 @@
 #ifndef DISTRHO_PLUGIN_INFO_H_INCLUDED
 #define DISTRHO_PLUGIN_INFO_H_INCLUDED
 
-#define DISTRHO_PLUGIN_NAME "MaFreeverb"
-#define DISTRHO_PLUGIN_URI  "http://distrho.sf.net/plugins/MaFreeverb"
+#define DISTRHO_PLUGIN_BRAND "DISTRHO"
+#define DISTRHO_PLUGIN_NAME  "MaFreeverb"
+#define DISTRHO_PLUGIN_URI   "http://distrho.sf.net/plugins/MaFreeverb"
 
 #define DISTRHO_PLUGIN_HAS_UI        0
 #define DISTRHO_PLUGIN_IS_RT_SAFE    0
 #define DISTRHO_PLUGIN_NUM_INPUTS    1
 #define DISTRHO_PLUGIN_NUM_OUTPUTS   1
 
-//#define DISTRHO_PLUGIN_LV2_CATEGORY "lv2:ReverbPlugin"
+#define DISTRHO_PLUGIN_LV2_CATEGORY "lv2:ReverbPlugin"
+
+#define DISTRHO_PLUGIN_DESCRIPTION "Max Gen Freeverb example."
+#define DISTRHO_PLUGIN_VERSION d_cconst('D', 'M', 'f', 'v')
 
 #endif // DISTRHO_PLUGIN_INFO_H_INCLUDED

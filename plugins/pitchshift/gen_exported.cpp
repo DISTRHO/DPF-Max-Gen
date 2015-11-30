@@ -69,7 +69,7 @@ typedef struct State {
 		m_delay_5.reset("m_delay_5", 88200);
 		m_blur_6 = 0;
 		m_window_7 = 100;
-		m_ratio_8 = 0;
+		m_ratio_8 = 1;
 		m_xfade_9 = 1;
 		samples_to_seconds = (1 / samplerate);
 		m_phasor_10.reset(0);

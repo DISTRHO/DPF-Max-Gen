@@ -39,24 +39,35 @@ protected:
         return DISTRHO_PLUGIN_NAME;
     }
 
+    const char* getDescription() const noexcept override
+    {
+        return DISTRHO_PLUGIN_DESCRIPTION;
+    }
+
     const char* getMaker() const noexcept override
     {
         return "DISTRHO";
     }
 
+    const char* getHomePage() const noexcept override
+    {
+        return "https://github.com/DISTRHO/DPF-Max-Gen";
+    }
+
     const char* getLicense() const noexcept override
     {
-        return "LGPL";
+        return "ISC";
     }
 
     uint32_t getVersion() const noexcept override
     {
-        return 0x1000;
+        return d_version(0, 1, 0);
     }
 
     int64_t getUniqueId() const noexcept override
     {
-        return d_cconst('D', '3', 'E', 'Q');
+        // TODO
+        return d_cconst('D', 'M', 'a', 'G');
     }
 
     // -------------------------------------------------------------------

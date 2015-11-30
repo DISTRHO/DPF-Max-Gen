@@ -17,14 +17,19 @@
 #ifndef DISTRHO_PLUGIN_INFO_H_INCLUDED
 #define DISTRHO_PLUGIN_INFO_H_INCLUDED
 
-#define DISTRHO_PLUGIN_NAME "Pitchotto"
-#define DISTRHO_PLUGIN_URI  "http://distrho.sf.net/plugins/Pitchotto"
+#define DISTRHO_PLUGIN_BRAND "Shiro"
+#define DISTRHO_PLUGIN_NAME  "Pitchotto"
+#define DISTRHO_PLUGIN_URI   "http://distrho.sf.net/plugins/Pitchotto"
 
 #define DISTRHO_PLUGIN_HAS_UI        0
 #define DISTRHO_PLUGIN_IS_RT_SAFE    0
 #define DISTRHO_PLUGIN_NUM_INPUTS    1
 #define DISTRHO_PLUGIN_NUM_OUTPUTS   1
 
-//#define DISTRHO_PLUGIN_LV2_CATEGORY "lv2:ReverbPlugin"
+#define DISTRHO_PLUGIN_LV2_CATEGORY "lv2:PitchPlugin"
+
+#define DISTRHO_PLUGIN_DESCRIPTION "Pitchotto is a pitch-shifter based on the \"Pitch-Shift\"-genpatch in Max, where Phase-shifting is used to achieve different intervals.\n\
+There are two shifted signals available, both with variable window-sizes for arpeggio-like sounds."
+#define DISTRHO_PLUGIN_VERSION d_cconst('D', 'M', 'p', 'c')
 
 #endif // DISTRHO_PLUGIN_INFO_H_INCLUDED
