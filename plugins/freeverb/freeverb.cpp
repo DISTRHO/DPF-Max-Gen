@@ -1,6 +1,6 @@
-#include "gen_exported.h"
+#include "freeverb.h"
 
-namespace gen_exported {
+namespace freeverb {
 
 
 /*******************************************************************************************************************
@@ -45,17 +45,17 @@ typedef struct State {
 	Delay m_delay_5;
 	double m_history_6;
 	double m_history_18;
-	double m_spread_1;
+	double m_fb_1;
 	double m_history_20;
 	double samplerate;
-	double m_fb_2;
+	double m_damp_2;
 	double m_history_8;
 	double m_history_16;
 	double m_history_14;
-	double m_damp_3;
+	double m_fb_3;
 	double m_history_12;
 	double m_history_10;
-	double m_fb_4;
+	double m_spread_4;
 	int vectorsize;
 	int __exception;
 	// re-initialize all member variables;
@@ -63,10 +63,10 @@ typedef struct State {
 		__exception = 0;
 		vectorsize = __vs;
 		samplerate = __sr;
-		m_spread_1 = 0;
-		m_fb_2 = 0.9;
-		m_damp_3 = 0.5;
-		m_fb_4 = 0.5;
+		m_fb_1 = 0.5;
+		m_damp_2 = 0.5;
+		m_fb_3 = 0.9;
+		m_spread_4 = 0;
 		m_delay_5.reset("m_delay_5", 2000);
 		m_history_6 = 0;
 		m_delay_7.reset("m_delay_7", 2000);
@@ -103,141 +103,141 @@ typedef struct State {
 			return __exception;
 			
 		};
-		double mul_498 = (m_fb_4 * 0.5);
-		double add_474 = (225 + m_spread_1);
-		double add_481 = (341 + m_spread_1);
-		double add_496 = (441 + m_spread_1);
-		double add_467 = (556 + m_spread_1);
-		double damp_379 = m_damp_3;
-		double damp_377 = damp_379;
-		double damp_376 = damp_379;
-		double damp_378 = damp_379;
-		double damp_380 = damp_379;
-		double damp_381 = damp_379;
-		double damp_382 = damp_379;
-		double damp_383 = damp_379;
-		double add_489 = (1557 + m_spread_1);
-		double rsub_72 = (1 - damp_377);
-		double add_488 = (1617 + m_spread_1);
-		double rsub_510 = (1 - damp_376);
-		double add_490 = (1491 + m_spread_1);
-		double rsub_522 = (1 - damp_378);
-		double add_491 = (1422 + m_spread_1);
-		double rsub_537 = (1 - damp_379);
-		double add_492 = (1356 + m_spread_1);
-		double rsub_548 = (1 - damp_380);
-		double add_493 = (1277 + m_spread_1);
-		double rsub_561 = (1 - damp_381);
-		double add_494 = (1188 + m_spread_1);
-		double rsub_576 = (1 - damp_382);
-		double add_495 = (1116 + m_spread_1);
-		double rsub_585 = (1 - damp_383);
+		double mul_448 = (m_fb_1 * 0.5);
+		double add_424 = (225 + m_spread_4);
+		double add_431 = (341 + m_spread_4);
+		double add_446 = (441 + m_spread_4);
+		double add_417 = (556 + m_spread_4);
+		double damp_327 = m_damp_2;
+		double damp_326 = damp_327;
+		double damp_328 = damp_327;
+		double damp_329 = damp_327;
+		double damp_330 = damp_327;
+		double damp_331 = damp_327;
+		double damp_332 = damp_327;
+		double damp_333 = damp_327;
+		double add_439 = (1557 + m_spread_4);
+		double rsub_295 = (1 - damp_327);
+		double add_438 = (1617 + m_spread_4);
+		double rsub_466 = (1 - damp_326);
+		double add_440 = (1491 + m_spread_4);
+		double rsub_479 = (1 - damp_328);
+		double add_441 = (1422 + m_spread_4);
+		double rsub_484 = (1 - damp_329);
+		double add_442 = (1356 + m_spread_4);
+		double rsub_496 = (1 - damp_330);
+		double add_443 = (1277 + m_spread_4);
+		double rsub_508 = (1 - damp_331);
+		double add_444 = (1188 + m_spread_4);
+		double rsub_520 = (1 - damp_332);
+		double add_445 = (1116 + m_spread_4);
+		double rsub_532 = (1 - damp_333);
 		// the main sample loop;
 		while ((__n--)) { 
 			const double in1 = (*(__in1++));
-			double mul_509 = (in1 * 0.015);
-			double tap_79 = m_delay_5.read_linear(add_489);
-			double gen_460 = tap_79;
-			double mul_77 = (tap_79 * damp_377);
-			double mul_75 = (m_history_6 * rsub_72);
-			double add_76 = (mul_77 + mul_75);
-			double mul_73 = (add_76 * m_fb_2);
-			double add_80 = (mul_509 + mul_73);
-			double history_74_next_81 = add_76;
-			double tap_514 = m_delay_7.read_linear(add_488);
-			double gen_508 = tap_514;
-			double mul_518 = (tap_514 * damp_376);
-			double mul_512 = (m_history_8 * rsub_510);
-			double add_513 = (mul_518 + mul_512);
-			double mul_515 = (add_513 * m_fb_2);
-			double add_517 = (mul_509 + mul_515);
-			double history_74_next_516 = add_513;
-			double tap_526 = m_delay_9.read_linear(add_490);
-			double gen_449 = tap_526;
-			double mul_530 = (tap_526 * damp_378);
-			double mul_524 = (m_history_10 * rsub_522);
-			double add_525 = (mul_530 + mul_524);
-			double mul_527 = (add_525 * m_fb_2);
-			double add_529 = (mul_509 + mul_527);
-			double history_74_next_528 = add_525;
-			double tap_539 = m_delay_11.read_linear(add_491);
-			double gen_438 = tap_539;
-			double mul_536 = (tap_539 * damp_379);
-			double mul_535 = (m_history_12 * rsub_537);
-			double add_538 = (mul_536 + mul_535);
-			double mul_540 = (add_538 * m_fb_2);
-			double add_541 = (mul_509 + mul_540);
-			double history_74_next_543 = add_538;
-			double tap_550 = m_delay_13.read_linear(add_492);
-			double gen_427 = tap_550;
-			double mul_547 = (tap_550 * damp_380);
-			double mul_546 = (m_history_14 * rsub_548);
-			double add_549 = (mul_547 + mul_546);
-			double mul_551 = (add_549 * m_fb_2);
-			double add_553 = (mul_509 + mul_551);
-			double history_74_next_555 = add_549;
-			double tap_563 = m_delay_15.read_linear(add_493);
-			double gen_416 = tap_563;
-			double mul_560 = (tap_563 * damp_381);
-			double mul_559 = (m_history_16 * rsub_561);
-			double add_562 = (mul_560 + mul_559);
-			double mul_564 = (add_562 * m_fb_2);
-			double add_565 = (mul_509 + mul_564);
-			double history_74_next_566 = add_562;
-			double tap_574 = m_delay_17.read_linear(add_494);
-			double gen_405 = tap_574;
-			double mul_572 = (tap_574 * damp_382);
-			double mul_571 = (m_history_18 * rsub_576);
-			double add_573 = (mul_572 + mul_571);
-			double mul_575 = (add_573 * m_fb_2);
-			double add_577 = (mul_509 + mul_575);
-			double history_74_next_579 = add_573;
-			double tap_587 = m_delay_19.read_linear(add_495);
-			double gen_394 = tap_587;
-			double mul_584 = (tap_587 * damp_383);
-			double mul_583 = (m_history_20 * rsub_585);
-			double add_586 = (mul_584 + mul_583);
-			double mul_588 = (add_586 * m_fb_2);
-			double add_589 = (mul_509 + mul_588);
-			double history_74_next_591 = add_586;
-			double add_497 = ((((((((gen_394 + gen_405) + gen_416) + gen_427) + gen_438) + gen_449) + gen_508) + gen_460) + 0);
-			double tap_60 = m_delay_21.read_linear(add_467);
-			double sub_56 = (add_497 - tap_60);
-			double mul_58 = (tap_60 * mul_498);
-			double add_57 = (add_497 + mul_58);
-			double tap_597 = m_delay_22.read_linear(add_496);
-			double sub_594 = (sub_56 - tap_597);
-			double mul_596 = (tap_597 * mul_498);
-			double add_598 = (sub_56 + mul_596);
-			double tap_603 = m_delay_23.read_linear(add_481);
-			double sub_600 = (sub_594 - tap_603);
-			double mul_602 = (tap_603 * mul_498);
-			double add_604 = (sub_594 + mul_602);
-			double tap_608 = m_delay_24.read_linear(add_474);
-			double sub_606 = (sub_600 - tap_608);
-			double mul_609 = (tap_608 * mul_498);
-			double add_610 = (sub_600 + mul_609);
-			double out1 = sub_606;
-			m_delay_5.write(add_80);
-			m_delay_24.write(add_610);
-			m_delay_23.write(add_604);
-			m_delay_22.write(add_598);
-			m_delay_21.write(add_57);
-			m_history_20 = history_74_next_591;
-			m_delay_19.write(add_589);
-			m_history_18 = history_74_next_579;
-			m_delay_17.write(add_577);
-			m_history_16 = history_74_next_566;
-			m_delay_15.write(add_565);
-			m_history_14 = history_74_next_555;
-			m_delay_13.write(add_553);
-			m_history_12 = history_74_next_543;
-			m_delay_11.write(add_541);
-			m_history_10 = history_74_next_528;
-			m_delay_9.write(add_529);
-			m_history_8 = history_74_next_516;
-			m_delay_7.write(add_517);
-			m_history_6 = history_74_next_81;
+			double mul_459 = (in1 * 0.015);
+			double tap_302 = m_delay_5.read_linear(add_439);
+			double gen_410 = tap_302;
+			double mul_300 = (tap_302 * damp_327);
+			double mul_298 = (m_history_6 * rsub_295);
+			double add_299 = (mul_300 + mul_298);
+			double mul_296 = (add_299 * m_fb_3);
+			double add_303 = (mul_459 + mul_296);
+			double history_297_next_304 = add_299;
+			double tap_469 = m_delay_7.read_linear(add_438);
+			double gen_458 = tap_469;
+			double mul_468 = (tap_469 * damp_326);
+			double mul_465 = (m_history_8 * rsub_466);
+			double add_464 = (mul_468 + mul_465);
+			double mul_462 = (add_464 * m_fb_3);
+			double add_463 = (mul_459 + mul_462);
+			double history_297_next_461 = add_464;
+			double tap_474 = m_delay_9.read_linear(add_440);
+			double gen_399 = tap_474;
+			double mul_480 = (tap_474 * damp_328);
+			double mul_478 = (m_history_10 * rsub_479);
+			double add_476 = (mul_480 + mul_478);
+			double mul_473 = (add_476 * m_fb_3);
+			double add_477 = (mul_459 + mul_473);
+			double history_297_next_475 = add_476;
+			double tap_489 = m_delay_11.read_linear(add_441);
+			double gen_388 = tap_489;
+			double mul_493 = (tap_489 * damp_329);
+			double mul_487 = (m_history_12 * rsub_484);
+			double add_492 = (mul_493 + mul_487);
+			double mul_491 = (add_492 * m_fb_3);
+			double add_490 = (mul_459 + mul_491);
+			double history_297_next_485 = add_492;
+			double tap_500 = m_delay_13.read_linear(add_442);
+			double gen_377 = tap_500;
+			double mul_501 = (tap_500 * damp_330);
+			double mul_499 = (m_history_14 * rsub_496);
+			double add_505 = (mul_501 + mul_499);
+			double mul_504 = (add_505 * m_fb_3);
+			double add_503 = (mul_459 + mul_504);
+			double history_297_next_497 = add_505;
+			double tap_512 = m_delay_15.read_linear(add_443);
+			double gen_366 = tap_512;
+			double mul_517 = (tap_512 * damp_331);
+			double mul_511 = (m_history_16 * rsub_508);
+			double add_516 = (mul_517 + mul_511);
+			double mul_513 = (add_516 * m_fb_3);
+			double add_514 = (mul_459 + mul_513);
+			double history_297_next_509 = add_516;
+			double tap_525 = m_delay_17.read_linear(add_444);
+			double gen_355 = tap_525;
+			double mul_521 = (tap_525 * damp_332);
+			double mul_524 = (m_history_18 * rsub_520);
+			double add_529 = (mul_521 + mul_524);
+			double mul_526 = (add_529 * m_fb_3);
+			double add_527 = (mul_459 + mul_526);
+			double history_297_next_522 = add_529;
+			double tap_537 = m_delay_19.read_linear(add_445);
+			double gen_344 = tap_537;
+			double mul_541 = (tap_537 * damp_333);
+			double mul_536 = (m_history_20 * rsub_532);
+			double add_538 = (mul_541 + mul_536);
+			double mul_540 = (add_538 * m_fb_3);
+			double add_534 = (mul_459 + mul_540);
+			double history_297_next_533 = add_538;
+			double add_447 = ((((((((gen_344 + gen_355) + gen_366) + gen_377) + gen_388) + gen_399) + gen_458) + gen_410) + 0);
+			double tap_283 = m_delay_21.read_linear(add_417);
+			double sub_279 = (add_447 - tap_283);
+			double mul_281 = (tap_283 * mul_448);
+			double add_280 = (add_447 + mul_281);
+			double tap_548 = m_delay_22.read_linear(add_446);
+			double sub_546 = (sub_279 - tap_548);
+			double mul_547 = (tap_548 * mul_448);
+			double add_544 = (sub_279 + mul_547);
+			double tap_554 = m_delay_23.read_linear(add_431);
+			double sub_552 = (sub_546 - tap_554);
+			double mul_553 = (tap_554 * mul_448);
+			double add_550 = (sub_546 + mul_553);
+			double tap_560 = m_delay_24.read_linear(add_424);
+			double sub_558 = (sub_552 - tap_560);
+			double mul_559 = (tap_560 * mul_448);
+			double add_556 = (sub_552 + mul_559);
+			double out1 = sub_558;
+			m_delay_5.write(add_303);
+			m_delay_24.write(add_556);
+			m_delay_23.write(add_550);
+			m_delay_22.write(add_544);
+			m_delay_21.write(add_280);
+			m_history_20 = history_297_next_533;
+			m_delay_19.write(add_534);
+			m_history_18 = history_297_next_522;
+			m_delay_17.write(add_527);
+			m_history_16 = history_297_next_509;
+			m_delay_15.write(add_514);
+			m_history_14 = history_297_next_497;
+			m_delay_13.write(add_503);
+			m_history_12 = history_297_next_485;
+			m_delay_11.write(add_490);
+			m_history_10 = history_297_next_475;
+			m_delay_9.write(add_477);
+			m_history_8 = history_297_next_461;
+			m_delay_7.write(add_463);
+			m_history_6 = history_297_next_304;
 			m_delay_5.step();
 			m_delay_7.step();
 			m_delay_9.step();
@@ -257,17 +257,17 @@ typedef struct State {
 		return __exception;
 		
 	};
-	inline void set_spread(double _value) {
-		m_spread_1 = (_value < 0 ? 0 : (_value > 400 ? 400 : _value));
-	};
-	inline void set_fb1(double _value) {
-		m_fb_2 = (_value < 0 ? 0 : (_value > 1 ? 1 : _value));
+	inline void set_fb2(double _value) {
+		m_fb_1 = (_value < 0 ? 0 : (_value > 1 ? 1 : _value));
 	};
 	inline void set_damp(double _value) {
-		m_damp_3 = (_value < 0 ? 0 : (_value > 1 ? 1 : _value));
+		m_damp_2 = (_value < 0 ? 0 : (_value > 1 ? 1 : _value));
 	};
-	inline void set_fb2(double _value) {
-		m_fb_4 = (_value < 0 ? 0 : (_value > 1 ? 1 : _value));
+	inline void set_fb1(double _value) {
+		m_fb_3 = (_value < 0 ? 0 : (_value > 1 ? 1 : _value));
+	};
+	inline void set_spread(double _value) {
+		m_spread_4 = (_value < 0 ? 0 : (_value > 400 ? 400 : _value));
 	};
 	
 } State;
@@ -310,10 +310,10 @@ void reset(CommonState *cself) {
 void setparameter(CommonState *cself, long index, double value, void *ref) {
 	State * self = (State *)cself;
 	switch (index) {
-		case 0: self->set_spread(value); break;
-		case 1: self->set_fb1(value); break;
-		case 2: self->set_damp(value); break;
-		case 3: self->set_fb2(value); break;
+		case 0: self->set_fb2(value); break;
+		case 1: self->set_damp(value); break;
+		case 2: self->set_fb1(value); break;
+		case 3: self->set_spread(value); break;
 		
 		default: break;
 	}
@@ -324,10 +324,10 @@ void setparameter(CommonState *cself, long index, double value, void *ref) {
 void getparameter(CommonState *cself, long index, double *value) {
 	State *self = (State *)cself;
 	switch (index) {
-		case 0: *value = self->m_spread_1; break;
-		case 1: *value = self->m_fb_2; break;
-		case 2: *value = self->m_damp_3; break;
-		case 3: *value = self->m_fb_4; break;
+		case 0: *value = self->m_fb_1; break;
+		case 1: *value = self->m_damp_2; break;
+		case 2: *value = self->m_fb_3; break;
+		case 3: *value = self->m_spread_4; break;
 		
 		default: break;
 	}
@@ -347,11 +347,53 @@ void * create(double sr, long vs) {
 	self->__commonstate.vs = vs;
 	self->__commonstate.params = (ParamInfo *)genlib_sysmem_newptr(4 * sizeof(ParamInfo));
 	self->__commonstate.numparams = 4;
-	// initialize parameter 0 ("m_spread_1")
+	// initialize parameter 0 ("m_fb_1")
 	pi = self->__commonstate.params + 0;
+	pi->name = "fb2";
+	pi->paramtype = GENLIB_PARAMTYPE_FLOAT;
+	pi->defaultvalue = self->m_fb_1;
+	pi->defaultref = 0;
+	pi->hasinputminmax = false;
+	pi->inputmin = 0; 
+	pi->inputmax = 1;
+	pi->hasminmax = true;
+	pi->outputmin = 0;
+	pi->outputmax = 1;
+	pi->exp = 0;
+	pi->units = "";		// no units defined
+	// initialize parameter 1 ("m_damp_2")
+	pi = self->__commonstate.params + 1;
+	pi->name = "damp";
+	pi->paramtype = GENLIB_PARAMTYPE_FLOAT;
+	pi->defaultvalue = self->m_damp_2;
+	pi->defaultref = 0;
+	pi->hasinputminmax = false;
+	pi->inputmin = 0; 
+	pi->inputmax = 1;
+	pi->hasminmax = true;
+	pi->outputmin = 0;
+	pi->outputmax = 1;
+	pi->exp = 0;
+	pi->units = "";		// no units defined
+	// initialize parameter 2 ("m_fb_3")
+	pi = self->__commonstate.params + 2;
+	pi->name = "fb1";
+	pi->paramtype = GENLIB_PARAMTYPE_FLOAT;
+	pi->defaultvalue = self->m_fb_3;
+	pi->defaultref = 0;
+	pi->hasinputminmax = false;
+	pi->inputmin = 0; 
+	pi->inputmax = 1;
+	pi->hasminmax = true;
+	pi->outputmin = 0;
+	pi->outputmax = 1;
+	pi->exp = 0;
+	pi->units = "";		// no units defined
+	// initialize parameter 3 ("m_spread_4")
+	pi = self->__commonstate.params + 3;
 	pi->name = "spread";
 	pi->paramtype = GENLIB_PARAMTYPE_FLOAT;
-	pi->defaultvalue = self->m_spread_1;
+	pi->defaultvalue = self->m_spread_4;
 	pi->defaultref = 0;
 	pi->hasinputminmax = false;
 	pi->inputmin = 0; 
@@ -359,48 +401,6 @@ void * create(double sr, long vs) {
 	pi->hasminmax = true;
 	pi->outputmin = 0;
 	pi->outputmax = 400;
-	pi->exp = 0;
-	pi->units = "";		// no units defined
-	// initialize parameter 1 ("m_fb_2")
-	pi = self->__commonstate.params + 1;
-	pi->name = "fb1";
-	pi->paramtype = GENLIB_PARAMTYPE_FLOAT;
-	pi->defaultvalue = self->m_fb_2;
-	pi->defaultref = 0;
-	pi->hasinputminmax = false;
-	pi->inputmin = 0; 
-	pi->inputmax = 1;
-	pi->hasminmax = true;
-	pi->outputmin = 0;
-	pi->outputmax = 1;
-	pi->exp = 0;
-	pi->units = "";		// no units defined
-	// initialize parameter 2 ("m_damp_3")
-	pi = self->__commonstate.params + 2;
-	pi->name = "damp";
-	pi->paramtype = GENLIB_PARAMTYPE_FLOAT;
-	pi->defaultvalue = self->m_damp_3;
-	pi->defaultref = 0;
-	pi->hasinputminmax = false;
-	pi->inputmin = 0; 
-	pi->inputmax = 1;
-	pi->hasminmax = true;
-	pi->outputmin = 0;
-	pi->outputmax = 1;
-	pi->exp = 0;
-	pi->units = "";		// no units defined
-	// initialize parameter 3 ("m_fb_4")
-	pi = self->__commonstate.params + 3;
-	pi->name = "fb2";
-	pi->paramtype = GENLIB_PARAMTYPE_FLOAT;
-	pi->defaultvalue = self->m_fb_4;
-	pi->defaultref = 0;
-	pi->hasinputminmax = false;
-	pi->inputmin = 0; 
-	pi->inputmax = 1;
-	pi->hasminmax = true;
-	pi->outputmin = 0;
-	pi->outputmax = 1;
 	pi->exp = 0;
 	pi->units = "";		// no units defined
 	
