@@ -7,7 +7,7 @@
 # --------------------------------------------------------------
 # Project name, used for binaries
 
-NAME = MaBitCrush
+NAME = MaBitcrush
 
 # --------------------------------------------------------------
 # Files to build
