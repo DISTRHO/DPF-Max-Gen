@@ -15,4 +15,6 @@
 bin/*-dssi/
 bin/*.lv2/
 bin/Ma*
+bin/Pitchotto
+bin/Shiroverb
 gen_dsp/

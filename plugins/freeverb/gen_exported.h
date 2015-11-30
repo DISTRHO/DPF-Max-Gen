@@ -22,7 +22,7 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "genlib_exportfunctions.h"
 #include "genlib_ops.h"
 
-namespace freeverb {
+namespace gen_exported {
 
 int num_inputs();
 int num_outputs();
@@ -34,4 +34,4 @@ void getparameter(CommonState *cself, long index, double *value);
 void * create(double sr, long vs);
 void destroy(CommonState *cself);
 
-} // freeverb::
+} // gen_exported::

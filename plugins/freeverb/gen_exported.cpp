@@ -1,6 +1,6 @@
-#include "freeverb.h"
+#include "gen_exported.h"
 
-namespace freeverb {
+namespace gen_exported {
 
 
 /*******************************************************************************************************************
@@ -417,4 +417,4 @@ void destroy(CommonState *cself) {
 }
 
 
-} // freeverb::
+} // gen_exported::
