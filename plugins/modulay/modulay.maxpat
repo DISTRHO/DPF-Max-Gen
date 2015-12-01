@@ -38,7 +38,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 16.0, 242.0, 171.0, 60.0 ],
-					"text" : "EFFECT BL FF FB   DL   DE\nvibrato     0    1    0     0    0-3\nflanger    .7   .7   .7     0    0-2\nchorus    .7    1  -.7  1-30 1-30"
+					"text" : "EFFECT BL FF FB   DL   DE\nvibrato     0    1    0     0    0-3\nflanger    .7   .7   .7     0    0-2\nchorus    .7    1  -.7  1-30  0-5"
 				}
 
 			}
@@ -107,7 +107,7 @@
 					"fontsize" : 12.0,
 					"id" : "obj-11",
 					"maxclass" : "flonum",
-					"maximum" : 30.0,
+					"maximum" : 5.0,
 					"minimum" : 0.0,
 					"numinlets" : 1,
 					"numoutlets" : 2,
@@ -123,7 +123,7 @@
 					"fontsize" : 12.0,
 					"id" : "obj-13",
 					"maxclass" : "flonum",
-					"maximum" : 5.0,
+					"maximum" : 10.0,
 					"minimum" : 0.1,
 					"numinlets" : 1,
 					"numoutlets" : 2,
@@ -579,8 +579,8 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 147.5, 342.0, 182.0, 20.0 ],
-									"text" : "param rate 2 @min 0.1 @max 5"
+									"patching_rect" : [ 147.5, 342.0, 188.0, 20.0 ],
+									"text" : "param rate 2 @min 0.1 @max 10"
 								}
 
 							}
@@ -635,8 +635,8 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 134.5, 317.0, 188.0, 20.0 ],
-									"text" : "param depth 0 @min 0 @max 30"
+									"patching_rect" : [ 134.5, 317.0, 181.0, 20.0 ],
+									"text" : "param depth 0 @min 0 @max 5"
 								}
 
 							}
@@ -1249,12 +1249,12 @@
  ]
 					}
 ,
-					"patching_rect" : [ 357.0, 231.0, 38.0, 20.0 ],
+					"patching_rect" : [ 357.0, 231.0, 523.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"exportfolder" : "Macintosh HD:/Users/Nino/Downloads/"
+						"exportfolder" : "Macintosh HD:/Users/Nino/Documents/Git/DPF-Max-Gen/plugins/modulay/"
 					}
 ,
-					"text" : "gen~"
+					"text" : "gen~ @exportfolder \"Macintosh HD:/Users/Nino/Documents/Git/DPF-Max-Gen/plugins/modulay\""
 				}
 
 			}
