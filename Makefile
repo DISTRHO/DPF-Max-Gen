@@ -17,6 +17,7 @@ plugins:
 	$(MAKE) all -C plugins/pitchshift
 	$(MAKE) all -C plugins/shiroverb
 	$(MAKE) all -C plugins/pitchotto
+	$(MAKE) all -C plugins/modulay
 
 gen: plugins dpf/utils/lv2_ttl_generator
 	@$(CURDIR)/dpf/utils/generate-ttl.sh
@@ -37,6 +38,7 @@ clean:
 	$(MAKE) clean -C plugins/pitchshift
 	$(MAKE) clean -C plugins/shiroverb
 	$(MAKE) clean -C plugins/pitchotto
+	$(MAKE) clean -C plugins/modulay
 
 # --------------------------------------------------------------
 
