@@ -17,7 +17,7 @@
 #ifndef DISTRHO_PLUGIN_INFO_H_INCLUDED
 #define DISTRHO_PLUGIN_INFO_H_INCLUDED
 
-#define DISTRHO_PLUGIN_BRAND "Shiro"
+#define DISTRHO_PLUGIN_BRAND "SHIRO"
 #define DISTRHO_PLUGIN_NAME  "Pitchotto"
 #define DISTRHO_PLUGIN_URI   "http://distrho.sf.net/plugins/Pitchotto"
 
