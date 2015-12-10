@@ -97,8 +97,8 @@ typedef struct State {
 		while ((__n--)) { 
 			const double in1 = (*(__in1++));
 			double tap_190 = m_delay_3.read_linear(mstosamps_191);
-			double mix_196 = (m_y_1 + (clamp_173 * (tap_190 - m_y_1)));
-			double mix_170 = mix_196;
+			double mix_200 = (m_y_1 + (clamp_173 * (tap_190 - m_y_1)));
+			double mix_170 = mix_200;
 			double mul_187 = (mix_170 * mul_168);
 			m_cycle_14.freq(m_rate_4);
 			double cycle_176 = m_cycle_14(__sinedata);
