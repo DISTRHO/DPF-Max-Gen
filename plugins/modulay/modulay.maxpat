@@ -663,8 +663,8 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 57.5, 127.0, 220.0, 20.0 ],
-									"text" : "param cutoff 2500 @min 0 @max 6000"
+									"patching_rect" : [ 57.5, 127.0, 233.0, 20.0 ],
+									"text" : "param cutoff 2500 @min 500 @max 6000"
 								}
 
 							}
