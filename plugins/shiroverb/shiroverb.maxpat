@@ -1547,7 +1547,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 863.000061, 1499.0, 190.0, 20.0 ],
-									"text" : "param mix 50 @min 0 @max 100"
+									"text" : "param mix 75 @min 0 @max 100"
 								}
 
 							}
@@ -3354,7 +3354,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 649.0, 446.0, 236.0, 20.0 ],
-									"text" : "param roomsize 150 @min 0.1 @max 300"
+									"text" : "param roomsize 100 @min 0.1 @max 300"
 								}
 
 							}
