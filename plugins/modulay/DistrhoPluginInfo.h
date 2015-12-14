@@ -28,7 +28,7 @@
 
 #define DISTRHO_PLUGIN_LV2_CATEGORY "lv2:DelayPlugin"
 
-#define DISTRHO_PLUGIN_DESCRIPTION "Modulay is a delay with variable types of modulation based on the settings that are set."
+#define DISTRHO_PLUGIN_DESCRIPTION "Modulay is a delay with variable types of modulation based on the setting of the Morph-knob."
 #define DISTRHO_PLUGIN_VERSION d_cconst('D', 'M', 'd', 'y')
 
 #endif // DISTRHO_PLUGIN_INFO_H_INCLUDED
