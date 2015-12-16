@@ -26,7 +26,9 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #include <cmath>
 
-#if ! DISTRHO_OS_MAC
+#if DISTRHO_OS_MAC
+# include <malloc/malloc.h>
+#else
 # include <malloc.h>
 # if DISTRHO_OS_WINDOWS
 #  define malloc_size _msize

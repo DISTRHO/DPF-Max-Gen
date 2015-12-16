@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 64.0, 71.0, 960.0, 601.0 ],
+		"rect" : [ 64.0, 97.0, 960.0, 575.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -405,7 +405,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 197.0, 507.0, 41.0, 20.0 ],
-									"text" : "+ 150"
+									"text" : "+ 125"
 								}
 
 							}
@@ -1933,9 +1933,9 @@
 			}
  ],
 		"parameters" : 		{
+			"obj-8::obj-35" : [ "[5]", "Level", 0 ],
 			"obj-8::obj-32" : [ "[8]", "[2]", 0 ],
-			"obj-8::obj-21::obj-6" : [ "live.tab[3]", "live.tab[1]", 0 ],
-			"obj-8::obj-35" : [ "[5]", "Level", 0 ]
+			"obj-8::obj-21::obj-6" : [ "live.tab[3]", "live.tab[1]", 0 ]
 		}
 ,
 		"dependency_cache" : [ 			{
