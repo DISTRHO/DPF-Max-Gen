@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 0.0, 51.0, 914.0, 562.0 ],
+		"rect" : [ 46.0, 93.0, 914.0, 562.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -204,7 +204,7 @@
 							"parameter_shortname" : "flonum[2]",
 							"parameter_type" : 3,
 							"parameter_initial_enable" : 1,
-							"parameter_initial" : [ 30 ],
+							"parameter_initial" : [ 50 ],
 							"parameter_invisible" : 1
 						}
 
@@ -392,7 +392,7 @@
 							"parameter_shortname" : "flonum[4]",
 							"parameter_type" : 3,
 							"parameter_initial_enable" : 1,
-							"parameter_initial" : [ 75 ],
+							"parameter_initial" : [ 50 ],
 							"parameter_invisible" : 1
 						}
 
@@ -449,7 +449,7 @@
 							"parameter_shortname" : "flonum[3]",
 							"parameter_type" : 3,
 							"parameter_initial_enable" : 1,
-							"parameter_initial" : [ 200 ],
+							"parameter_initial" : [ 150 ],
 							"parameter_invisible" : 1
 						}
 
@@ -1837,7 +1837,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 838.416626, 471.0, 217.0, 20.0 ],
-									"text" : "param shimmer 30 @min 0 @max 100"
+									"text" : "param shimmer 50 @min 0 @max 100"
 								}
 
 							}
@@ -1866,7 +1866,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 863.000061, 1499.0, 190.0, 20.0 ],
-									"text" : "param mix 75 @min 0 @max 100"
+									"text" : "param mix 50 @min 0 @max 100"
 								}
 
 							}
@@ -3673,7 +3673,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 649.0, 446.0, 226.0, 20.0 ],
-									"text" : "param roomsize 200 @min 1 @max 300"
+									"text" : "param roomsize 150 @min 1 @max 300"
 								}
 
 							}
@@ -6873,12 +6873,12 @@
  ]
 					}
 ,
-					"patching_rect" : [ 15.0, 299.0, 474.0, 20.0 ],
+					"patching_rect" : [ 15.0, 299.0, 527.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"exportfolder" : "Macintosh HD:/Users/Nino/Documents/Git/DPF-Max-Gen/plugins/"
+						"exportfolder" : "Macintosh HD:/Users/Nino/Documents/Git/DPF-Max-Gen/plugins/shiroverb/"
 					}
 ,
-					"text" : "gen~ @exportfolder \"Macintosh HD:/Users/Nino/Documents/Git/DPF-Max-Gen/plugins\""
+					"text" : "gen~ @exportfolder \"Macintosh HD:/Users/Nino/Documents/Git/DPF-Max-Gen/plugins/shiroverb\""
 				}
 
 			}
@@ -7127,35 +7127,35 @@
 		"dependency_cache" : [ 			{
 				"name" : "demosound.maxpat",
 				"bootpath" : "/Applications/Max 6.1/Cycling '74/msp-help",
-				"patcherrelativepath" : "../../../../../../Applications/Max 6.1/Cycling '74/msp-help",
+				"patcherrelativepath" : "../../../../../../../Applications/Max 6.1/Cycling '74/msp-help",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "sine.svg",
 				"bootpath" : "/Applications/Max 6.1/patches/picts/m4l-picts",
-				"patcherrelativepath" : "../../../../../../Applications/Max 6.1/patches/picts/m4l-picts",
+				"patcherrelativepath" : "../../../../../../../Applications/Max 6.1/patches/picts/m4l-picts",
 				"type" : "svg ",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "saw.svg",
 				"bootpath" : "/Applications/Max 6.1/patches/picts/m4l-picts",
-				"patcherrelativepath" : "../../../../../../Applications/Max 6.1/patches/picts/m4l-picts",
+				"patcherrelativepath" : "../../../../../../../Applications/Max 6.1/patches/picts/m4l-picts",
 				"type" : "svg ",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "square.svg",
 				"bootpath" : "/Applications/Max 6.1/patches/picts/m4l-picts",
-				"patcherrelativepath" : "../../../../../../Applications/Max 6.1/patches/picts/m4l-picts",
+				"patcherrelativepath" : "../../../../../../../Applications/Max 6.1/patches/picts/m4l-picts",
 				"type" : "svg ",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "random.svg",
 				"bootpath" : "/Applications/Max 6.1/patches/picts/m4l-picts",
-				"patcherrelativepath" : "../../../../../../Applications/Max 6.1/patches/picts/m4l-picts",
+				"patcherrelativepath" : "../../../../../../../Applications/Max 6.1/patches/picts/m4l-picts",
 				"type" : "svg ",
 				"implicit" : 1
 			}
