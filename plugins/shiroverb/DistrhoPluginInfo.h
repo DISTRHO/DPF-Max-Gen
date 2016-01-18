@@ -28,7 +28,7 @@
 
 #define DISTRHO_PLUGIN_LV2_CATEGORY "lv2:ReverbPlugin"
 
-#define DISTRHO_PLUGIN_DESCRIPTION "Shiroverb is a shimmer-reverb based on the \"Gigaverb\"-genpatch, ported from the implementation by Juhana Sadeharju, and the \"Pitch-Shift\"-genpatch, both in Max."
+#define DISTRHO_PLUGIN_DESCRIPTION "Shiroverb is a shimmer-reverb based on the \"Gigaverb\"-genpatch, ported from the implementation by Juhana Sadeharju, and the \"Pitch-Shift\"-genpatch, both in Max MSP."
 #define DISTRHO_PLUGIN_VERSION d_cconst('D', 'M', 's', 'v')
 
 #endif // DISTRHO_PLUGIN_INFO_H_INCLUDED
