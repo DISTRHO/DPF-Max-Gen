@@ -36,11 +36,11 @@ typedef struct State {
 	Delay m_delay_4;
 	SineCycle m_cycle_14;
 	SineData __sinedata;
-	double m_morph_9;
+	double m_depth_9;
 	double m_time_10;
 	double m_tone_12;
-	double m_rate_11;
-	double m_depth_8;
+	double m_morph_11;
+	double m_rate_8;
 	double m_repeats_6;
 	double m_smth_3;
 	double m_mix_7;
@@ -61,10 +61,10 @@ typedef struct State {
 		m_delay_5.reset("m_delay_5", 44100);
 		m_repeats_6 = 75;
 		m_mix_7 = 75;
-		m_depth_8 = 1;
-		m_morph_9 = 50;
+		m_rate_8 = 2;
+		m_depth_9 = 1;
 		m_time_10 = 500;
-		m_rate_11 = 2;
+		m_morph_11 = 50;
 		m_tone_12 = 3000;
 		m_dcblock_13.reset();
 		m_cycle_14.reset(samplerate, 0);
@@ -84,70 +84,70 @@ typedef struct State {
 			return __exception;
 			
 		};
-		double mstosamps_19 = (m_time_10 * (samplerate * 0.001));
-		double mul_7 = (m_mix_7 * 0.01);
-		double expr_55 = safediv(((m_tone_12 * 2) * 3.1415926535898), 48000);
-		double sin_14 = sin(expr_55);
-		double clamp_15 = ((sin_14 <= 1e-05) ? 1e-05 : ((sin_14 >= 0.99999) ? 0.99999 : sin_14));
-		int lt_22 = (m_morph_9 < 50);
-		double mul_32 = (m_morph_9 * -0.8);
-		double add_30 = (mul_32 + 40);
-		double abs_31 = fabs(add_30);
-		double mul_35 = (abs_31 * 0.01);
-		double mul_11 = (m_repeats_6 * 0.01);
-		double mul_21 = (m_morph_9 * -0.4);
-		double add_20 = (mul_21 + 20);
-		double mul_23 = (lt_22 * add_20);
-		double mul_4 = (m_morph_9 * -0.8);
-		double add_2 = (mul_4 + 40);
-		double abs_3 = fabs(add_2);
-		double rsub_1 = (80 - abs_3);
-		double mul_5 = (rsub_1 * 0.01);
-		double mul_34 = (m_morph_9 * 0.8);
-		double sub_33 = (mul_34 - 40);
-		double mul_36 = (sub_33 * 0.01);
-		int gt_28 = (m_morph_9 > 50);
-		double mul_27 = (gt_28 * m_morph_9);
-		double sub_26 = (mul_27 - 50);
-		double clamp_25 = ((sub_26 <= 0) ? 0 : ((sub_26 >= 50) ? 50 : sub_26));
-		double mul_29 = (clamp_25 * 0.04);
-		double add_24 = (mul_23 + mul_29);
+		double mul_141 = (m_mix_7 * 0.01);
+		double mstosamps_153 = (m_time_10 * (samplerate * 0.001));
+		double expr_185 = safediv(((m_tone_12 * 2) * 3.1415926535898), 48000);
+		double sin_148 = sin(expr_185);
+		double clamp_149 = ((sin_148 <= 1e-05) ? 1e-05 : ((sin_148 >= 0.99999) ? 0.99999 : sin_148));
+		int lt_156 = (m_morph_11 < 50);
+		double mul_166 = (m_morph_11 * -0.8);
+		double add_164 = (mul_166 + 40);
+		double abs_165 = fabs(add_164);
+		double mul_169 = (abs_165 * 0.01);
+		double mul_145 = (m_repeats_6 * 0.01);
+		double mul_155 = (m_morph_11 * -0.4);
+		double add_154 = (mul_155 + 20);
+		double mul_157 = (lt_156 * add_154);
+		double mul_138 = (m_morph_11 * -0.8);
+		double add_136 = (mul_138 + 40);
+		double abs_137 = fabs(add_136);
+		double rsub_135 = (80 - abs_137);
+		double mul_139 = (rsub_135 * 0.01);
+		double mul_168 = (m_morph_11 * 0.8);
+		double sub_167 = (mul_168 - 40);
+		double mul_170 = (sub_167 * 0.01);
+		int gt_162 = (m_morph_11 > 50);
+		double mul_161 = (gt_162 * m_morph_11);
+		double sub_160 = (mul_161 - 50);
+		double clamp_159 = ((sub_160 <= 0) ? 0 : ((sub_160 >= 50) ? 50 : sub_160));
+		double mul_163 = (clamp_159 * 0.04);
+		double add_158 = (mul_157 + mul_163);
 		// the main sample loop;
 		while ((__n--)) { 
 			const double in1 = (*(__in1++));
-			double mix_61 = (mstosamps_19 + (0.999 * (m_smth_3 - mstosamps_19)));
-			double mix_8 = mix_61;
-			double tap_18 = m_delay_5.read_linear(mix_8);
-			double mix_62 = (m_y_2 + (clamp_15 * (tap_18 - m_y_2)));
-			double mix_12 = mix_62;
-			double mul_41 = (mix_12 * mul_35);
-			double mul_16 = (mix_12 * mul_11);
-			double dcblock_9 = m_dcblock_13(mul_16);
-			double clamp_10 = ((dcblock_9 <= -1) ? -1 : ((dcblock_9 >= 1) ? 1 : dcblock_9));
-			m_cycle_14.freq(m_rate_11);
-			double cycle_46 = m_cycle_14(__sinedata);
-			double cycleindex_47 = m_cycle_14.phase();
-			double add_45 = (cycle_46 + 1);
-			double mul_44 = (add_45 * 0.5);
-			double mul_48 = (m_depth_8 * mul_44);
-			double add_37 = (mul_48 + add_24);
-			double mstosamps_43 = (add_37 * (samplerate * 0.001));
-			double mix_63 = (mstosamps_43 + (0.999 * (m_smth_1 - mstosamps_43)));
-			double mix_42 = mix_63;
-			double tap_50 = m_delay_4.read_linear(mix_42);
-			double mul_38 = (tap_50 * mul_5);
-			double mul_6 = ((mul_38 + mul_41) * mul_7);
-			double out1 = (mul_6 + in1);
-			double mul_39 = (tap_50 * mul_36);
-			double add_40 = (mix_12 + mul_39);
-			double smth1_next_58 = mix_8;
-			double y0_next_59 = mix_12;
-			double smth2_next_60 = mix_42;
-			m_delay_5.write((clamp_10 + in1));
-			m_delay_4.write(add_40);
-			m_smth_3 = smth1_next_58;
-			m_y_2 = y0_next_59;
-			m_smth_1 = smth2_next_60;
+			double mix_189 = (mstosamps_153 + (0.999 * (m_smth_3 - mstosamps_153)));
+			double mix_142 = mix_189;
+			double tap_152 = m_delay_5.read_linear(mix_142);
+			double mix_190 = (m_y_2 + (clamp_149 * (tap_152 - m_y_2)));
+			double mix_146 = mix_190;
+			double mul_175 = (mix_146 * mul_169);
+			double mul_150 = (mix_146 * mul_145);
+			double dcblock_143 = m_dcblock_13(mul_150);
+			double clamp_144 = ((dcblock_143 <= -1) ? -1 : ((dcblock_143 >= 1) ? 1 : dcblock_143));
+			m_cycle_14.freq(m_rate_8);
+			double cycle_180 = m_cycle_14(__sinedata);
+			double cycleindex_181 = m_cycle_14.phase();
+			double add_179 = (cycle_180 + 1);
+			double mul_178 = (add_179 * 0.5);
+			double mul_182 = (m_depth_9 * mul_178);
+			double add_171 = (mul_182 + add_158);
+			double mstosamps_177 = (add_171 * (samplerate * 0.001));
+			double mix_191 = (mstosamps_177 + (0.999 * (m_smth_1 - mstosamps_177)));
+			double mix_176 = mix_191;
+			double tap_184 = m_delay_4.read_linear(mix_176);
+			double mul_172 = (tap_184 * mul_139);
+			double mul_140 = ((mul_172 + mul_175) * mul_141);
+			double out1 = (mul_140 + in1);
+			double mul_173 = (tap_184 * mul_170);
+			double add_174 = (mix_146 + mul_173);
+			double smth1_next_186 = mix_142;
+			double y0_next_187 = mix_146;
+			double smth2_next_188 = mix_176;
+			m_delay_5.write((clamp_144 + in1));
+			m_delay_4.write(add_174);
+			m_smth_3 = smth1_next_186;
+			m_y_2 = y0_next_187;
+			m_smth_1 = smth2_next_188;
 			m_delay_4.step();
 			m_delay_5.step();
 			// assign results to output buffer;
@@ -163,17 +163,17 @@ typedef struct State {
 	inline void set_mix(double _value) {
 		m_mix_7 = (_value < 0 ? 0 : (_value > 100 ? 100 : _value));
 	};
-	inline void set_depth(double _value) {
-		m_depth_8 = (_value < 0 ? 0 : (_value > 3 ? 3 : _value));
+	inline void set_rate(double _value) {
+		m_rate_8 = (_value < 0.1 ? 0.1 : (_value > 5 ? 5 : _value));
 	};
-	inline void set_morph(double _value) {
-		m_morph_9 = (_value < 0 ? 0 : (_value > 100 ? 100 : _value));
+	inline void set_depth(double _value) {
+		m_depth_9 = (_value < 0.1 ? 0.1 : (_value > 3 ? 3 : _value));
 	};
 	inline void set_time(double _value) {
 		m_time_10 = (_value < 20 ? 20 : (_value > 1000 ? 1000 : _value));
 	};
-	inline void set_rate(double _value) {
-		m_rate_11 = (_value < 0.1 ? 0.1 : (_value > 5 ? 5 : _value));
+	inline void set_morph(double _value) {
+		m_morph_11 = (_value < 0 ? 0 : (_value > 100 ? 100 : _value));
 	};
 	inline void set_tone(double _value) {
 		m_tone_12 = (_value < 500 ? 500 : (_value > 6000 ? 6000 : _value));
@@ -221,10 +221,10 @@ void setparameter(CommonState *cself, long index, double value, void *ref) {
 	switch (index) {
 		case 0: self->set_repeats(value); break;
 		case 1: self->set_mix(value); break;
-		case 2: self->set_depth(value); break;
-		case 3: self->set_morph(value); break;
+		case 2: self->set_rate(value); break;
+		case 3: self->set_depth(value); break;
 		case 4: self->set_time(value); break;
-		case 5: self->set_rate(value); break;
+		case 5: self->set_morph(value); break;
 		case 6: self->set_tone(value); break;
 		
 		default: break;
@@ -238,10 +238,10 @@ void getparameter(CommonState *cself, long index, double *value) {
 	switch (index) {
 		case 0: *value = self->m_repeats_6; break;
 		case 1: *value = self->m_mix_7; break;
-		case 2: *value = self->m_depth_8; break;
-		case 3: *value = self->m_morph_9; break;
+		case 2: *value = self->m_rate_8; break;
+		case 3: *value = self->m_depth_9; break;
 		case 4: *value = self->m_time_10; break;
-		case 5: *value = self->m_rate_11; break;
+		case 5: *value = self->m_morph_11; break;
 		case 6: *value = self->m_tone_12; break;
 		
 		default: break;
@@ -290,32 +290,32 @@ void * create(double sr, long vs) {
 	pi->outputmax = 100;
 	pi->exp = 0;
 	pi->units = "";		// no units defined
-	// initialize parameter 2 ("m_depth_8")
+	// initialize parameter 2 ("m_rate_8")
 	pi = self->__commonstate.params + 2;
-	pi->name = "depth";
+	pi->name = "rate";
 	pi->paramtype = GENLIB_PARAMTYPE_FLOAT;
-	pi->defaultvalue = self->m_depth_8;
+	pi->defaultvalue = self->m_rate_8;
 	pi->defaultref = 0;
 	pi->hasinputminmax = false;
 	pi->inputmin = 0; 
 	pi->inputmax = 1;
 	pi->hasminmax = true;
-	pi->outputmin = 0;
-	pi->outputmax = 3;
+	pi->outputmin = 0.1;
+	pi->outputmax = 5;
 	pi->exp = 0;
 	pi->units = "";		// no units defined
-	// initialize parameter 3 ("m_morph_9")
+	// initialize parameter 3 ("m_depth_9")
 	pi = self->__commonstate.params + 3;
-	pi->name = "morph";
+	pi->name = "depth";
 	pi->paramtype = GENLIB_PARAMTYPE_FLOAT;
-	pi->defaultvalue = self->m_morph_9;
+	pi->defaultvalue = self->m_depth_9;
 	pi->defaultref = 0;
 	pi->hasinputminmax = false;
 	pi->inputmin = 0; 
 	pi->inputmax = 1;
 	pi->hasminmax = true;
-	pi->outputmin = 0;
-	pi->outputmax = 100;
+	pi->outputmin = 0.1;
+	pi->outputmax = 3;
 	pi->exp = 0;
 	pi->units = "";		// no units defined
 	// initialize parameter 4 ("m_time_10")
@@ -332,18 +332,18 @@ void * create(double sr, long vs) {
 	pi->outputmax = 1000;
 	pi->exp = 0;
 	pi->units = "";		// no units defined
-	// initialize parameter 5 ("m_rate_11")
+	// initialize parameter 5 ("m_morph_11")
 	pi = self->__commonstate.params + 5;
-	pi->name = "rate";
+	pi->name = "morph";
 	pi->paramtype = GENLIB_PARAMTYPE_FLOAT;
-	pi->defaultvalue = self->m_rate_11;
+	pi->defaultvalue = self->m_morph_11;
 	pi->defaultref = 0;
 	pi->hasinputminmax = false;
 	pi->inputmin = 0; 
 	pi->inputmax = 1;
 	pi->hasminmax = true;
-	pi->outputmin = 0.1;
-	pi->outputmax = 5;
+	pi->outputmin = 0;
+	pi->outputmax = 100;
 	pi->exp = 0;
 	pi->units = "";		// no units defined
 	// initialize parameter 6 ("m_tone_12")

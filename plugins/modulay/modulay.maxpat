@@ -1426,8 +1426,8 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 144.5, 220.0, 181.0, 20.0 ],
-									"text" : "param depth 1 @min 0 @max 3"
+									"patching_rect" : [ 144.5, 220.0, 191.0, 20.0 ],
+									"text" : "param depth 1 @min 0.1 @max 3"
 								}
 
 							}
