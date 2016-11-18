@@ -19,6 +19,7 @@ TARGET_DIR = ../../bin
 
 BUILD_C_FLAGS   += -I.
 BUILD_CXX_FLAGS += -I. -I../common -I../common/gen_dsp -I../../dpf/distrho -I../../dpf/dgl -Wno-unused-parameter
+BUILD_CXX_FLAGS += -DGENLIB_USE_FASTMATH -DGENLIB_USE_FLOAT32 -DGENLIB_USE_JSON=0
 
 ifeq ($(HAVE_DGL),true)
 BASE_FLAGS += -DHAVE_DGL

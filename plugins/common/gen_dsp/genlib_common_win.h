@@ -21,23 +21,28 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   DEALINGS IN THE SOFTWARE.
 *******************************************************************************************************************/
 
-#ifndef GENLIB_EXPORT_FUNCTIONS_H
-#define GENLIB_EXPORT_FUNCTIONS_H 1
+#ifndef GENLIB_COMMON_WIN_H
+#define GENLIB_COMMON_WIN_H
 
-typedef char *t_ptr;
+#ifdef _MSC_VER
+	#define GEN_WINDOWS
+#endif
 
-t_ptr sysmem_newptr(t_ptr_size size);
-t_ptr sysmem_newptrclear(t_ptr_size size);
-t_ptr sysmem_resizeptr(void *ptr, t_ptr_size newsize);
-t_ptr sysmem_resizeptrclear(void *ptr, t_ptr_size newsize);
-t_ptr_size sysmem_ptrsize(void *ptr);
-void sysmem_freeptr(void *ptr);
-void sysmem_copyptr(const void *src, void *dst, t_ptr_size bytes);
-unsigned long systime_ticks(void);
+#ifdef GEN_WINDOWS
 
-void genlib_report_error(const char *s);
-void genlib_report_message(const char *s);
-void set_zero64(t_sample *mem, long size);
+	#include <malloc.h>
+	#include <limits>
 
-#endif // GENLIB_EXPORT_FUNCTIONS_H
+	typedef __int32 int32_t;
+	typedef unsigned __int32 uint32_t;
+	typedef __int64 int64_t;
+	typedef unsigned __int64 uint64_t;
+	#define malloc_size _msize
+
+	#define __DBL_EPSILON__ (DBL_EPSILON)
+
+#endif
+
+#endif
+
 
