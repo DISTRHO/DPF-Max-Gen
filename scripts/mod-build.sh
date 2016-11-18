@@ -1,3 +1,4 @@
+#!/bin/bash
 
 BASENAME=arm-mod-linux-gnueabihf
 OPTS_BASE="-O3 -mcpu=cortex-a7 -mtune=cortex-a7 -mfpu=neon-vfpv4 -mfloat-abi=hard -mvectorize-with-neon-quad"
