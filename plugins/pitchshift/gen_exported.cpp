@@ -2,26 +2,28 @@
 
 namespace gen_exported {
 
-
 /*******************************************************************************************************************
-Copyright (c) 2012 Cycling '74
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-and associated documentation files (the "Software"), to deal in the Software without restriction,
-including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
-and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies
-or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
-INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
-OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+Cycling '74 License for Max-Generated Code for Export
+Copyright (c) 2016 Cycling '74
+The code that Max generates automatically and that end users are capable of exporting and using, and any
+  associated documentation files (the “Software”) is a work of authorship for which Cycling '74 is the author
+  and owner for copyright purposes.  A license is hereby granted, free of charge, to any person obtaining a
+  copy of the Software (“Licensee”) to use, copy, modify, merge, publish, and distribute copies of the Software,
+  and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+The Software is licensed to Licensee only for non-commercial use. Users who wish to make commercial use of the
+  Software must contact the copyright owner to determine if a license for commercial use is available, and the
+  terms and conditions for same, which may include fees or royalties. For commercial use, please send inquiries
+  to licensing (at) cycling74.com.  The determination of whether a use is commercial use or non-commercial use is based
+  upon the use, not the user. The Software may be used by individuals, institutions, governments, corporations, or
+  other business whether for-profit or non-profit so long as the use itself is not a commercialization of the
+  materials or a use that generates or is intended to generate income, revenue, sales or profit.
+The above copyright notice and this license shall be included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+  THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+  CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+  DEALINGS IN THE SOFTWARE.
 *******************************************************************************************************************/
-
 
 // global noise generator
 Noise noise;
@@ -29,36 +31,36 @@ static const int GENLIB_LOOPCOUNT_BAIL = 100000;
 
 
 // The State struct contains all the state and procedures for the gendsp kernel
-typedef struct State { 
+typedef struct State {
 	CommonState __commonstate;
 	Delay m_delay_5;
-	Delta m_delta_14;
-	Delta m_delta_11;
-	Delta m_delta_20;
-	Delta m_delta_17;
-	Phasor m_phasor_10;
-	Sah m_sah_13;
-	Sah m_sah_12;
-	Sah m_sah_15;
-	Sah m_sah_16;
-	Sah m_sah_21;
-	Sah m_sah_19;
-	Sah m_sah_18;
-	Sah m_sah_22;
-	double samples_to_seconds;
-	double m_ratio_8;
-	double m_xfade_9;
-	double m_history_1;
-	double samplerate;
-	double m_history_3;
-	double m_history_2;
-	double m_blur_6;
-	double m_window_7;
-	double m_history_4;
-	int vectorsize;
+	Delta __m_delta_14;
+	Delta __m_delta_11;
+	Delta __m_delta_20;
+	Delta __m_delta_17;
+	Phasor __m_phasor_10;
+	Sah __m_sah_13;
+	Sah __m_sah_12;
+	Sah __m_sah_15;
+	Sah __m_sah_16;
+	Sah __m_sah_21;
+	Sah __m_sah_19;
+	Sah __m_sah_18;
+	Sah __m_sah_22;
 	int __exception;
+	int vectorsize;
+	t_sample m_window_8;
+	t_sample m_history_1;
+	t_sample samplerate;
+	t_sample m_xfade_9;
+	t_sample m_history_2;
+	t_sample m_history_4;
+	t_sample m_history_3;
+	t_sample m_ratio_7;
+	t_sample m_blur_6;
+	t_sample samples_to_seconds;
 	// re-initialize all member variables;
-	inline void reset(double __sr, int __vs) { 
+	inline void reset(t_param __sr, int __vs) {
 		__exception = 0;
 		vectorsize = __vs;
 		samplerate = __sr;
@@ -68,124 +70,124 @@ typedef struct State {
 		m_history_4 = 0;
 		m_delay_5.reset("m_delay_5", 88200);
 		m_blur_6 = 0;
-		m_window_7 = 100;
-		m_ratio_8 = 1;
+		m_ratio_7 = 0;
+		m_window_8 = 100;
 		m_xfade_9 = 1;
 		samples_to_seconds = (1 / samplerate);
-		m_phasor_10.reset(0);
-		m_delta_11.reset(0);
-		m_sah_12.reset(0);
-		m_sah_13.reset(0);
-		m_delta_14.reset(0);
-		m_sah_15.reset(0);
-		m_sah_16.reset(0);
-		m_delta_17.reset(0);
-		m_sah_18.reset(0);
-		m_sah_19.reset(0);
-		m_delta_20.reset(0);
-		m_sah_21.reset(0);
-		m_sah_22.reset(0);
+		__m_phasor_10.reset(0);
+		__m_delta_11.reset(0);
+		__m_sah_12.reset(0);
+		__m_sah_13.reset(0);
+		__m_delta_14.reset(0);
+		__m_sah_15.reset(0);
+		__m_sah_16.reset(0);
+		__m_delta_17.reset(0);
+		__m_sah_18.reset(0);
+		__m_sah_19.reset(0);
+		__m_delta_20.reset(0);
+		__m_sah_21.reset(0);
+		__m_sah_22.reset(0);
 		genlib_reset_complete(this);
 		
 	};
 	// the signal processing routine;
-	inline int perform(t_sample ** __ins, t_sample ** __outs, int __n) { 
+	inline int perform(t_sample ** __ins, t_sample ** __outs, int __n) {
 		vectorsize = __n;
 		const t_sample * __in1 = __ins[0];
 		t_sample * __out1 = __outs[0];
 		t_sample * __out2 = __outs[1];
-		if (__exception) { 
+		if (__exception) {
 			return __exception;
 			
-		} else if (( (__in1 == 0) || (__out1 == 0) || (__out2 == 0) )) { 
+		} else if (( (__in1 == 0) || (__out1 == 0) || (__out2 == 0) )) {
 			__exception = GENLIB_ERR_NULL_BUFFER;
 			return __exception;
 			
 		};
-		double mstosamps_1223 = (m_window_7 * (samplerate * 0.001));
-		double rsub_1209 = (1 - m_ratio_8);
-		double mul_1208 = (rsub_1209 * 1000);
-		double div_1207 = safediv(mul_1208, m_window_7);
+		t_sample mstosamps_138 = (m_window_8 * (samplerate * 0.001));
+		t_sample rsub_124 = (1 - m_ratio_7);
+		t_sample mul_123 = (rsub_124 * 1000);
+		t_sample div_122 = safediv(mul_123, m_window_8);
 		samples_to_seconds = (1 / samplerate);
 		// the main sample loop;
-		while ((__n--)) { 
-			const double in1 = (*(__in1++));
-			double noise_1159 = noise();
-			double abs_1177 = fabs(noise_1159);
-			double mul_1183 = (abs_1177 * m_blur_6);
-			double noise_1161 = noise();
-			double abs_1179 = fabs(noise_1161);
-			double mul_1189 = (abs_1179 * m_blur_6);
-			double noise_1160 = noise();
-			double abs_1178 = fabs(noise_1160);
-			double mul_1186 = (abs_1178 * m_blur_6);
-			double noise_1158 = noise();
-			double abs_1176 = fabs(noise_1158);
-			double mul_1180 = (abs_1176 * m_blur_6);
-			double phasor_1229 = m_phasor_10(div_1207, samples_to_seconds);
-			double add_1206 = ((m_history_4 + phasor_1229) + 0.5);
-			double mod_1205 = safemod(add_1206, 1);
-			double delta_1185 = m_delta_11(mod_1205);
-			double sah_1164 = m_sah_12(mul_1183, delta_1185, 0);
-			double sah_1184 = m_sah_13(mstosamps_1223, delta_1185, 0);
-			double mul_1173 = (sah_1184 * mod_1205);
-			double sub_1204 = (mod_1205 - 0.5);
-			double mul_1203 = (sub_1204 * 3.1415926535898);
-			double cos_1202 = cos(mul_1203);
-			double mul_1192 = (cos_1202 * cos_1202);
-			double add_1228 = ((m_history_3 + phasor_1229) + 0);
-			double mod_1227 = safemod(add_1228, 1);
-			double delta_1169 = m_delta_14(mod_1227);
-			double sah_1168 = m_sah_15(mul_1189, delta_1169, 0);
-			double sah_1190 = m_sah_16(mstosamps_1223, delta_1169, 0);
-			double mul_1175 = (sah_1190 * mod_1227);
-			double sub_1226 = (mod_1227 - 0.5);
-			double mul_1225 = (sub_1226 * 3.1415926535898);
-			double cos_1224 = cos(mul_1225);
-			double mul_1194 = (cos_1224 * cos_1224);
-			double add_1222 = ((m_history_2 + phasor_1229) + 0.25);
-			double mod_1221 = safemod(add_1222, 1);
-			double delta_1188 = m_delta_17(mod_1221);
-			double sah_1166 = m_sah_18(mul_1186, delta_1188, 0);
-			double sah_1187 = m_sah_19(mstosamps_1223, delta_1188, 0);
-			double mul_1174 = (sah_1187 * mod_1221);
-			double sub_1220 = (mod_1221 - 0.5);
-			double mul_1219 = (sub_1220 * 3.1415926535898);
-			double cos_1218 = cos(mul_1219);
-			double mul_1193 = (cos_1218 * cos_1218);
-			double add_1200 = ((m_history_1 + phasor_1229) + 0.75);
-			double mod_1199 = safemod(add_1200, 1);
-			double delta_1182 = m_delta_20(mod_1199);
-			double sah_1162 = m_sah_21(mul_1180, delta_1182, 0);
-			double sah_1181 = m_sah_22(mstosamps_1223, delta_1182, 0);
-			double mul_1172 = (sah_1181 * mod_1199);
-			double tap_1214 = m_delay_5.read_linear(mul_1175);
-			double tap_1215 = m_delay_5.read_linear(mul_1174);
-			double tap_1216 = m_delay_5.read_linear(mul_1173);
-			double tap_1217 = m_delay_5.read_linear(mul_1172);
-			double mul_1212 = (tap_1214 * mul_1194);
-			double mul_1201 = (tap_1216 * mul_1192);
-			double add_1245 = (mul_1201 + mul_1212);
-			double mix_1244 = (in1 + (m_xfade_9 * (add_1245 - in1)));
-			double out1 = mix_1244;
-			double mul_1211 = (tap_1215 * mul_1193);
-			double sub_1198 = (mod_1199 - 0.5);
-			double mul_1197 = (sub_1198 * 3.1415926535898);
-			double cos_1196 = cos(mul_1197);
-			double mul_1191 = (cos_1196 * cos_1196);
-			double mul_1195 = (tap_1217 * mul_1191);
-			double add_1247 = (mul_1195 + mul_1211);
-			double mix_1246 = (in1 + (m_xfade_9 * (add_1247 - in1)));
-			double out2 = mix_1246;
-			double history_1165_next_1240 = sah_1164;
-			double history_1170_next_1241 = sah_1168;
-			double history_1167_next_1242 = sah_1166;
-			double history_1163_next_1243 = sah_1162;
+		while ((__n--)) {
+			const t_sample in1 = (*(__in1++));
+			t_sample noise_76 = noise();
+			t_sample abs_94 = fabs(noise_76);
+			t_sample mul_104 = (abs_94 * m_blur_6);
+			t_sample noise_74 = noise();
+			t_sample abs_92 = fabs(noise_74);
+			t_sample mul_98 = (abs_92 * m_blur_6);
+			t_sample noise_75 = noise();
+			t_sample abs_93 = fabs(noise_75);
+			t_sample mul_101 = (abs_93 * m_blur_6);
+			t_sample noise_73 = noise();
+			t_sample abs_91 = fabs(noise_73);
+			t_sample mul_95 = (abs_91 * m_blur_6);
+			t_sample phasor_144 = __m_phasor_10(div_122, samples_to_seconds);
+			t_sample add_143 = ((m_history_4 + phasor_144) + 0);
+			t_sample mod_142 = safemod(add_143, 1);
+			t_sample delta_84 = __m_delta_11(mod_142);
+			t_sample sah_83 = __m_sah_12(mul_104, delta_84, 0);
+			t_sample sah_105 = __m_sah_13(mstosamps_138, delta_84, 0);
+			t_sample mul_90 = (sah_105 * mod_142);
+			t_sample sub_141 = (mod_142 - 0.5);
+			t_sample mul_140 = (sub_141 * 3.1415926535898);
+			t_sample cos_139 = cos(mul_140);
+			t_sample mul_109 = (cos_139 * cos_139);
+			t_sample add_121 = ((m_history_3 + phasor_144) + 0.5);
+			t_sample mod_120 = safemod(add_121, 1);
+			t_sample delta_100 = __m_delta_14(mod_120);
+			t_sample sah_79 = __m_sah_15(mul_98, delta_100, 0);
+			t_sample sah_99 = __m_sah_16(mstosamps_138, delta_100, 0);
+			t_sample mul_88 = (sah_99 * mod_120);
+			t_sample sub_119 = (mod_120 - 0.5);
+			t_sample mul_118 = (sub_119 * 3.1415926535898);
+			t_sample cos_117 = cos(mul_118);
+			t_sample mul_107 = (cos_117 * cos_117);
+			t_sample add_137 = ((m_history_2 + phasor_144) + 0.25);
+			t_sample mod_136 = safemod(add_137, 1);
+			t_sample delta_103 = __m_delta_17(mod_136);
+			t_sample sah_81 = __m_sah_18(mul_101, delta_103, 0);
+			t_sample sah_102 = __m_sah_19(mstosamps_138, delta_103, 0);
+			t_sample mul_89 = (sah_102 * mod_136);
+			t_sample sub_135 = (mod_136 - 0.5);
+			t_sample mul_134 = (sub_135 * 3.1415926535898);
+			t_sample cos_133 = cos(mul_134);
+			t_sample mul_108 = (cos_133 * cos_133);
+			t_sample add_115 = ((m_history_1 + phasor_144) + 0.75);
+			t_sample mod_114 = safemod(add_115, 1);
+			t_sample delta_97 = __m_delta_20(mod_114);
+			t_sample sah_77 = __m_sah_21(mul_95, delta_97, 0);
+			t_sample sah_96 = __m_sah_22(mstosamps_138, delta_97, 0);
+			t_sample mul_87 = (sah_96 * mod_114);
+			t_sample tap_129 = m_delay_5.read_linear(mul_90);
+			t_sample tap_130 = m_delay_5.read_linear(mul_89);
+			t_sample tap_131 = m_delay_5.read_linear(mul_88);
+			t_sample tap_132 = m_delay_5.read_linear(mul_87);
+			t_sample mul_126 = (tap_130 * mul_108);
+			t_sample mul_127 = (tap_129 * mul_109);
+			t_sample mul_116 = (tap_131 * mul_107);
+			t_sample add_150 = (mul_116 + mul_127);
+			t_sample mix_149 = (in1 + (m_xfade_9 * (add_150 - in1)));
+			t_sample out1 = mix_149;
+			t_sample sub_113 = (mod_114 - 0.5);
+			t_sample mul_112 = (sub_113 * 3.1415926535898);
+			t_sample cos_111 = cos(mul_112);
+			t_sample mul_106 = (cos_111 * cos_111);
+			t_sample mul_110 = (tap_132 * mul_106);
+			t_sample add_152 = (mul_110 + mul_126);
+			t_sample mix_151 = (in1 + (m_xfade_9 * (add_152 - in1)));
+			t_sample out2 = mix_151;
+			t_sample history_85_next_145 = fixdenorm(sah_83);
+			t_sample history_80_next_146 = fixdenorm(sah_79);
+			t_sample history_82_next_147 = fixdenorm(sah_81);
+			t_sample history_78_next_148 = fixdenorm(sah_77);
 			m_delay_5.write(in1);
-			m_history_4 = history_1165_next_1240;
-			m_history_3 = history_1170_next_1241;
-			m_history_2 = history_1167_next_1242;
-			m_history_1 = history_1163_next_1243;
+			m_history_4 = history_85_next_145;
+			m_history_3 = history_80_next_146;
+			m_history_2 = history_82_next_147;
+			m_history_1 = history_78_next_148;
 			m_delay_5.step();
 			// assign results to output buffer;
 			(*(__out1++)) = out1;
@@ -195,27 +197,27 @@ typedef struct State {
 		return __exception;
 		
 	};
-	inline void set_blur(double _value) {
+	inline void set_blur(t_param _value) {
 		m_blur_6 = (_value < 0 ? 0 : (_value > 0.25 ? 0.25 : _value));
 	};
-	inline void set_window(double _value) {
-		m_window_7 = (_value < 0.1 ? 0.1 : (_value > 1000 ? 1000 : _value));
+	inline void set_ratio(t_param _value) {
+		m_ratio_7 = (_value < 0.25 ? 0.25 : (_value > 4 ? 4 : _value));
 	};
-	inline void set_ratio(double _value) {
-		m_ratio_8 = (_value < 0.25 ? 0.25 : (_value > 4 ? 4 : _value));
+	inline void set_window(t_param _value) {
+		m_window_8 = (_value < 0.1 ? 0.1 : (_value > 1000 ? 1000 : _value));
 	};
-	inline void set_xfade(double _value) {
+	inline void set_xfade(t_param _value) {
 		m_xfade_9 = (_value < 0 ? 0 : (_value > 1 ? 1 : _value));
 	};
 	
 } State;
 
 
-/// 
+///
 ///	Configuration for the genlib API
 ///
 
-/// Number of signal inputs and outputs 
+/// Number of signal inputs and outputs
 
 int gen_kernel_numins = 1;
 int gen_kernel_numouts = 2;
@@ -224,56 +226,119 @@ int num_inputs() { return gen_kernel_numins; }
 int num_outputs() { return gen_kernel_numouts; }
 int num_params() { return 4; }
 
-/// Assistive lables for the signal inputs and outputs 
+/// Assistive lables for the signal inputs and outputs
 
-const char * gen_kernel_innames[] = { "in1" };
-const char * gen_kernel_outnames[] = { "out1", "out2" };
+const char *gen_kernel_innames[] = { "in1" };
+const char *gen_kernel_outnames[] = { "out1", "out2" };
 
 /// Invoke the signal process of a State object
 
-int perform(CommonState *cself, t_sample **ins, long numins, t_sample **outs, long numouts, long n) { 
-	State * self = (State *)cself;
+int perform(CommonState *cself, t_sample **ins, long numins, t_sample **outs, long numouts, long n) {
+	State* self = (State *)cself;
 	return self->perform(ins, outs, n);
 }
 
 /// Reset all parameters and stateful operators of a State object
 
-void reset(CommonState *cself) { 
-	State * self = (State *)cself;
-	self->reset(cself->sr, cself->vs); 
+void reset(CommonState *cself) {
+	State* self = (State *)cself;
+	self->reset(cself->sr, cself->vs);
 }
 
-/// Set a parameter of a State object 
+/// Set a parameter of a State object
 
-void setparameter(CommonState *cself, long index, double value, void *ref) {
-	State * self = (State *)cself;
+void setparameter(CommonState *cself, long index, t_param value, void *ref) {
+	State *self = (State *)cself;
 	switch (index) {
 		case 0: self->set_blur(value); break;
-		case 1: self->set_window(value); break;
-		case 2: self->set_ratio(value); break;
+		case 1: self->set_ratio(value); break;
+		case 2: self->set_window(value); break;
 		case 3: self->set_xfade(value); break;
 		
 		default: break;
 	}
 }
 
-/// Get the value of a parameter of a State object 
+/// Get the value of a parameter of a State object
 
-void getparameter(CommonState *cself, long index, double *value) {
+void getparameter(CommonState *cself, long index, t_param *value) {
 	State *self = (State *)cself;
 	switch (index) {
 		case 0: *value = self->m_blur_6; break;
-		case 1: *value = self->m_window_7; break;
-		case 2: *value = self->m_ratio_8; break;
+		case 1: *value = self->m_ratio_7; break;
+		case 2: *value = self->m_window_8; break;
 		case 3: *value = self->m_xfade_9; break;
 		
 		default: break;
 	}
 }
 
+/// Get the name of a parameter of a State object
+
+const char *getparametername(CommonState *cself, long index) {
+	if (index >= 0 && index < cself->numparams) {
+		return cself->params[index].name;
+	}
+	return 0;
+}
+
+/// Get the minimum value of a parameter of a State object
+
+t_param getparametermin(CommonState *cself, long index) {
+	if (index >= 0 && index < cself->numparams) {
+		return cself->params[index].outputmin;
+	}
+	return 0;
+}
+
+/// Get the maximum value of a parameter of a State object
+
+t_param getparametermax(CommonState *cself, long index) {
+	if (index >= 0 && index < cself->numparams) {
+		return cself->params[index].outputmax;
+	}
+	return 0;
+}
+
+/// Get parameter of a State object has a minimum and maximum value
+
+char getparameterhasminmax(CommonState *cself, long index) {
+	if (index >= 0 && index < cself->numparams) {
+		return cself->params[index].hasminmax;
+	}
+	return 0;
+}
+
+/// Get the units of a parameter of a State object
+
+const char *getparameterunits(CommonState *cself, long index) {
+	if (index >= 0 && index < cself->numparams) {
+		return cself->params[index].units;
+	}
+	return 0;
+}
+
+/// Get the size of the state of all parameters of a State object
+
+size_t getstatesize(CommonState *cself) {
+	return genlib_getstatesize(cself, &getparameter);
+}
+
+/// Get the state of all parameters of a State object
+
+short getstate(CommonState *cself, char *state) {
+	return genlib_getstate(cself, state, &getparameter);
+}
+
+/// set the state of all parameters of a State object
+
+short setstate(CommonState *cself, const char *state) {
+	return genlib_setstate(cself, state, &setparameter);
+}
+
 /// Allocate and configure a new State object and it's internal CommonState:
 
-void * create(double sr, long vs) {
+void *create(t_param sr, long vs) {
 	State *self = new State;
 	self->reset(sr, vs);
 	ParamInfo *pi;
@@ -292,39 +357,39 @@ void * create(double sr, long vs) {
 	pi->defaultvalue = self->m_blur_6;
 	pi->defaultref = 0;
 	pi->hasinputminmax = false;
-	pi->inputmin = 0; 
+	pi->inputmin = 0;
 	pi->inputmax = 1;
 	pi->hasminmax = true;
 	pi->outputmin = 0;
 	pi->outputmax = 0.25;
 	pi->exp = 0;
 	pi->units = "";		// no units defined
-	// initialize parameter 1 ("m_window_7")
+	// initialize parameter 1 ("m_ratio_7")
 	pi = self->__commonstate.params + 1;
-	pi->name = "window";
-	pi->paramtype = GENLIB_PARAMTYPE_FLOAT;
-	pi->defaultvalue = self->m_window_7;
-	pi->defaultref = 0;
-	pi->hasinputminmax = false;
-	pi->inputmin = 0; 
-	pi->inputmax = 1;
-	pi->hasminmax = true;
-	pi->outputmin = 0.1;
-	pi->outputmax = 1000;
-	pi->exp = 0;
-	pi->units = "";		// no units defined
-	// initialize parameter 2 ("m_ratio_8")
-	pi = self->__commonstate.params + 2;
 	pi->name = "ratio";
 	pi->paramtype = GENLIB_PARAMTYPE_FLOAT;
-	pi->defaultvalue = self->m_ratio_8;
+	pi->defaultvalue = self->m_ratio_7;
 	pi->defaultref = 0;
 	pi->hasinputminmax = false;
-	pi->inputmin = 0; 
+	pi->inputmin = 0;
 	pi->inputmax = 1;
 	pi->hasminmax = true;
 	pi->outputmin = 0.25;
 	pi->outputmax = 4;
+	pi->exp = 0;
+	pi->units = "";		// no units defined
+	// initialize parameter 2 ("m_window_8")
+	pi = self->__commonstate.params + 2;
+	pi->name = "window";
+	pi->paramtype = GENLIB_PARAMTYPE_FLOAT;
+	pi->defaultvalue = self->m_window_8;
+	pi->defaultref = 0;
+	pi->hasinputminmax = false;
+	pi->inputmin = 0;
+	pi->inputmax = 1;
+	pi->hasminmax = true;
+	pi->outputmin = 0.1;
+	pi->outputmax = 1000;
 	pi->exp = 0;
 	pi->units = "";		// no units defined
 	// initialize parameter 3 ("m_xfade_9")
@@ -334,7 +399,7 @@ void * create(double sr, long vs) {
 	pi->defaultvalue = self->m_xfade_9;
 	pi->defaultref = 0;
 	pi->hasinputminmax = false;
-	pi->inputmin = 0; 
+	pi->inputmin = 0;
 	pi->inputmax = 1;
 	pi->hasminmax = true;
 	pi->outputmin = 0;
@@ -347,11 +412,11 @@ void * create(double sr, long vs) {
 
 /// Release all resources and memory used by a State object:
 
-void destroy(CommonState *cself) { 
-	State * self = (State *)cself;
+void destroy(CommonState *cself) {
+	State *self = (State *)cself;
 	genlib_sysmem_freeptr(cself->params);
 		
-	delete self; 
+	delete self;
 }
 
 

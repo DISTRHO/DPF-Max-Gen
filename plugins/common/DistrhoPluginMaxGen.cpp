@@ -57,7 +57,7 @@ void DistrhoPluginMaxGen::initParameter(uint32_t index, Parameter& parameter)
 
 float DistrhoPluginMaxGen::getParameterValue(uint32_t index) const
 {
-    double value = 0.0;
+    t_param value = 0.0;
     gen::getparameter(fGenState, index, &value);
     return value;
 }

@@ -2,26 +2,28 @@
 
 namespace gen_exported {
 
-
 /*******************************************************************************************************************
-Copyright (c) 2012 Cycling '74
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-and associated documentation files (the "Software"), to deal in the Software without restriction,
-including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
-and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies
-or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
-INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
-OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+Cycling '74 License for Max-Generated Code for Export
+Copyright (c) 2016 Cycling '74
+The code that Max generates automatically and that end users are capable of exporting and using, and any
+  associated documentation files (the “Software”) is a work of authorship for which Cycling '74 is the author
+  and owner for copyright purposes.  A license is hereby granted, free of charge, to any person obtaining a
+  copy of the Software (“Licensee”) to use, copy, modify, merge, publish, and distribute copies of the Software,
+  and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+The Software is licensed to Licensee only for non-commercial use. Users who wish to make commercial use of the
+  Software must contact the copyright owner to determine if a license for commercial use is available, and the
+  terms and conditions for same, which may include fees or royalties. For commercial use, please send inquiries
+  to licensing (at) cycling74.com.  The determination of whether a use is commercial use or non-commercial use is based
+  upon the use, not the user. The Software may be used by individuals, institutions, governments, corporations, or
+  other business whether for-profit or non-profit so long as the use itself is not a commercialization of the
+  materials or a use that generates or is intended to generate income, revenue, sales or profit.
+The above copyright notice and this license shall be included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+  THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+  CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+  DEALINGS IN THE SOFTWARE.
 *******************************************************************************************************************/
-
 
 // global noise generator
 Noise noise;
@@ -29,14 +31,14 @@ static const int GENLIB_LOOPCOUNT_BAIL = 100000;
 
 
 // The State struct contains all the state and procedures for the gendsp kernel
-typedef struct State { 
+typedef struct State {
 	CommonState __commonstate;
-	double m_resolution_1;
-	double samplerate;
-	int vectorsize;
 	int __exception;
+	int vectorsize;
+	t_sample samplerate;
+	t_sample m_resolution_1;
 	// re-initialize all member variables;
-	inline void reset(double __sr, int __vs) { 
+	inline void reset(t_param __sr, int __vs) {
 		__exception = 0;
 		vectorsize = __vs;
 		samplerate = __sr;
@@ -45,31 +47,31 @@ typedef struct State {
 		
 	};
 	// the signal processing routine;
-	inline int perform(t_sample ** __ins, t_sample ** __outs, int __n) { 
+	inline int perform(t_sample ** __ins, t_sample ** __outs, int __n) {
 		vectorsize = __n;
 		const t_sample * __in1 = __ins[0];
 		t_sample * __out1 = __outs[0];
 		t_sample * __out2 = __outs[1];
-		if (__exception) { 
+		if (__exception) {
 			return __exception;
 			
-		} else if (( (__in1 == 0) || (__out1 == 0) || (__out2 == 0) )) { 
+		} else if (( (__in1 == 0) || (__out1 == 0) || (__out2 == 0) )) {
 			__exception = GENLIB_ERR_NULL_BUFFER;
 			return __exception;
 			
 		};
 		// the main sample loop;
-		while ((__n--)) { 
-			const double in1 = (*(__in1++));
-			double mul_50 = (in1 * m_resolution_1);
-			double ceil_49 = ceil(mul_50);
-			double div_48 = safediv(ceil_49, m_resolution_1);
-			double out1 = div_48;
-			double add_45 = (mul_50 + 0.5);
-			double floor_46 = floor(add_45);
-			double sub_44 = (floor_46 - 0.5);
-			double div_47 = safediv(sub_44, m_resolution_1);
-			double out2 = div_47;
+		while ((__n--)) {
+			const t_sample in1 = (*(__in1++));
+			t_sample mul_649 = (in1 * m_resolution_1);
+			t_sample ceil_648 = ceil(mul_649);
+			t_sample div_647 = safediv(ceil_648, m_resolution_1);
+			t_sample out1 = div_647;
+			t_sample add_644 = (mul_649 + 0.5);
+			t_sample floor_645 = floor(add_644);
+			t_sample sub_643 = (floor_645 - 0.5);
+			t_sample div_646 = safediv(sub_643, m_resolution_1);
+			t_sample out2 = div_646;
 			// assign results to output buffer;
 			(*(__out1++)) = out1;
 			(*(__out2++)) = out2;
@@ -78,18 +80,18 @@ typedef struct State {
 		return __exception;
 		
 	};
-	inline void set_resolution(double _value) {
-		m_resolution_1 = (_value < 1 ? 1 : (_value > 16 ? 16 : _value));
+	inline void set_resolution(t_param _value) {
+		m_resolution_1 = (_value < 0 ? 0 : (_value > 1 ? 1 : _value));
 	};
 	
 } State;
 
 
-/// 
+///
 ///	Configuration for the genlib API
 ///
 
-/// Number of signal inputs and outputs 
+/// Number of signal inputs and outputs
 
 int gen_kernel_numins = 1;
 int gen_kernel_numouts = 2;
@@ -98,29 +100,29 @@ int num_inputs() { return gen_kernel_numins; }
 int num_outputs() { return gen_kernel_numouts; }
 int num_params() { return 1; }
 
-/// Assistive lables for the signal inputs and outputs 
+/// Assistive lables for the signal inputs and outputs
 
-const char * gen_kernel_innames[] = { "in1" };
-const char * gen_kernel_outnames[] = { "out1", "out2" };
+const char *gen_kernel_innames[] = { "in1" };
+const char *gen_kernel_outnames[] = { "out1", "out2" };
 
 /// Invoke the signal process of a State object
 
-int perform(CommonState *cself, t_sample **ins, long numins, t_sample **outs, long numouts, long n) { 
-	State * self = (State *)cself;
+int perform(CommonState *cself, t_sample **ins, long numins, t_sample **outs, long numouts, long n) {
+	State* self = (State *)cself;
 	return self->perform(ins, outs, n);
 }
 
 /// Reset all parameters and stateful operators of a State object
 
-void reset(CommonState *cself) { 
-	State * self = (State *)cself;
-	self->reset(cself->sr, cself->vs); 
+void reset(CommonState *cself) {
+	State* self = (State *)cself;
+	self->reset(cself->sr, cself->vs);
 }
 
-/// Set a parameter of a State object 
+/// Set a parameter of a State object
 
-void setparameter(CommonState *cself, long index, double value, void *ref) {
-	State * self = (State *)cself;
+void setparameter(CommonState *cself, long index, t_param value, void *ref) {
+	State *self = (State *)cself;
 	switch (index) {
 		case 0: self->set_resolution(value); break;
 		
@@ -128,9 +130,9 @@ void setparameter(CommonState *cself, long index, double value, void *ref) {
 	}
 }
 
-/// Get the value of a parameter of a State object 
+/// Get the value of a parameter of a State object
 
-void getparameter(CommonState *cself, long index, double *value) {
+void getparameter(CommonState *cself, long index, t_param *value) {
 	State *self = (State *)cself;
 	switch (index) {
 		case 0: *value = self->m_resolution_1; break;
@@ -139,9 +141,72 @@ void getparameter(CommonState *cself, long index, double *value) {
 	}
 }
 
+/// Get the name of a parameter of a State object
+
+const char *getparametername(CommonState *cself, long index) {
+	if (index >= 0 && index < cself->numparams) {
+		return cself->params[index].name;
+	}
+	return 0;
+}
+
+/// Get the minimum value of a parameter of a State object
+
+t_param getparametermin(CommonState *cself, long index) {
+	if (index >= 0 && index < cself->numparams) {
+		return cself->params[index].outputmin;
+	}
+	return 0;
+}
+
+/// Get the maximum value of a parameter of a State object
+
+t_param getparametermax(CommonState *cself, long index) {
+	if (index >= 0 && index < cself->numparams) {
+		return cself->params[index].outputmax;
+	}
+	return 0;
+}
+
+/// Get parameter of a State object has a minimum and maximum value
+
+char getparameterhasminmax(CommonState *cself, long index) {
+	if (index >= 0 && index < cself->numparams) {
+		return cself->params[index].hasminmax;
+	}
+	return 0;
+}
+
+/// Get the units of a parameter of a State object
+
+const char *getparameterunits(CommonState *cself, long index) {
+	if (index >= 0 && index < cself->numparams) {
+		return cself->params[index].units;
+	}
+	return 0;
+}
+
+/// Get the size of the state of all parameters of a State object
+
+size_t getstatesize(CommonState *cself) {
+	return genlib_getstatesize(cself, &getparameter);
+}
+
+/// Get the state of all parameters of a State object
+
+short getstate(CommonState *cself, char *state) {
+	return genlib_getstate(cself, state, &getparameter);
+}
+
+/// set the state of all parameters of a State object
+
+short setstate(CommonState *cself, const char *state) {
+	return genlib_setstate(cself, state, &setparameter);
+}
+
 /// Allocate and configure a new State object and it's internal CommonState:
 
-void * create(double sr, long vs) {
+void *create(t_param sr, long vs) {
 	State *self = new State;
 	self->reset(sr, vs);
 	ParamInfo *pi;
@@ -160,24 +225,24 @@ void * create(double sr, long vs) {
 	pi->defaultvalue = self->m_resolution_1;
 	pi->defaultref = 0;
 	pi->hasinputminmax = false;
-	pi->inputmin = 0; 
+	pi->inputmin = 0;
 	pi->inputmax = 1;
 	pi->hasminmax = true;
-	pi->outputmin = 1;
-	pi->outputmax = 16;
+	pi->outputmin = 0;
+	pi->outputmax = 1;
 	pi->exp = 0;
-	pi->units = "bits";		// no units defined
+	pi->units = "";		// no units defined
 	
 	return self;
 }
 
 /// Release all resources and memory used by a State object:
 
-void destroy(CommonState *cself) { 
-	State * self = (State *)cself;
+void destroy(CommonState *cself) {
+	State *self = (State *)cself;
 	genlib_sysmem_freeptr(cself->params);
 		
-	delete self; 
+	delete self;
 }
 
 
