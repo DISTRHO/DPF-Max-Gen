@@ -21,23 +21,20 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   DEALINGS IN THE SOFTWARE.
 *******************************************************************************************************************/
 
-#ifndef GENLIB_EXPORT_FUNCTIONS_H
-#define GENLIB_EXPORT_FUNCTIONS_H 1
+#ifndef GENLIB_PLATFORM_H
+#define GENLIB_PLATFORM_H 1
 
-typedef char *t_ptr;
+#include "genlib_common_win.h"
 
-t_ptr sysmem_newptr(t_ptr_size size);
-t_ptr sysmem_newptrclear(t_ptr_size size);
-t_ptr sysmem_resizeptr(void *ptr, t_ptr_size newsize);
-t_ptr sysmem_resizeptrclear(void *ptr, t_ptr_size newsize);
-t_ptr_size sysmem_ptrsize(void *ptr);
-void sysmem_freeptr(void *ptr);
-void sysmem_copyptr(const void *src, void *dst, t_ptr_size bytes);
-unsigned long systime_ticks(void);
+#if defined(ARM_MATH_CM4) || defined(ARM_MATH_CM7) // embedded ARM cortex support
+#define GENLIB_USE_ARMMATH
+#define GENLIB_USE_FASTMATH
+#endif // defined(ARM_MATH_CM4) || defined(ARM_MATH_CM7)
 
-void genlib_report_error(const char *s);
-void genlib_report_message(const char *s);
-void set_zero64(t_sample *mem, long size);
+#if defined (__arm__) // general ARM support
+#define GENLIB_USE_FLOAT32
+#endif
 
-#endif // GENLIB_EXPORT_FUNCTIONS_H
 
+
+#endif // ifdef GENLIB_PLATFORM_H
