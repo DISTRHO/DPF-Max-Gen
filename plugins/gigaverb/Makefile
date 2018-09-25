@@ -12,13 +12,18 @@ NAME = MaGigaverb
 # --------------------------------------------------------------
 # Files to build
 
-OBJS_DSP = \
-	DistrhoPluginMaxGen.cpp.o
+FILES_DSP = \
+	DistrhoPluginMaxGen.cpp
 
 # --------------------------------------------------------------
 # Do some magic
 
-include ../Makefile.mk
+include ../../dpf/Makefile.plugins.mk
+
+# --------------------------------------------------------------
+# Extra flags
+
+BUILD_CXX_FLAGS += -I../common -I../common/gen_dsp
 
 # --------------------------------------------------------------
 # Enable all possible plugin types
@@ -27,10 +32,7 @@ ifeq ($(HAVE_JACK),true)
 TARGETS += jack
 endif
 
-ifeq ($(LINUX),true)
 TARGETS += ladspa
-endif
-
 TARGETS += lv2_dsp
 TARGETS += vst
 

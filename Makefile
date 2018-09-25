@@ -4,7 +4,7 @@
 # Created by falkTX
 #
 
-include Makefile.mk
+include dpf/Makefile.base.mk
 
 all: plugins gen
 
@@ -16,6 +16,7 @@ plugins:
 	$(MAKE) all -C plugins/gigaverb
 	$(MAKE) all -C plugins/pitchshift
 
+ifneq ($(CROSS_COMPILING),true)
 gen: plugins dpf/utils/lv2_ttl_generator
 	@$(CURDIR)/dpf/utils/generate-ttl.sh
 ifeq ($(MACOS),true)
@@ -24,6 +25,9 @@ endif
 
 dpf/utils/lv2_ttl_generator:
 	$(MAKE) -C dpf/utils/lv2-ttl-generator
+else
+gen:
+endif
 
 # --------------------------------------------------------------
 
@@ -33,6 +37,7 @@ clean:
 	$(MAKE) clean -C plugins/freeverb
 	$(MAKE) clean -C plugins/gigaverb
 	$(MAKE) clean -C plugins/pitchshift
+	rm -rf bin build
 
 # --------------------------------------------------------------
 
